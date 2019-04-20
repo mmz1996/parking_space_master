@@ -40,9 +40,9 @@ export default new Router({
         name: 'update'
       },
       {
-        path: 'userupdate',
-        component: require('@/components/home/userupdate/').default,
-        name: 'userupdate'
+        path: 'mmz',
+        component: require('@/components/home/mmz/').default,
+        name: 'mmz'
       }
       ]
     }

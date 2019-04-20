@@ -86,12 +86,6 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
-    },
-    register () {
-      this.$emit('routerchange', 'register')
-    },
-    forgetpassword () {
-      this.$emit('routerchange', 'retrievePassword')
     }
   }
 }

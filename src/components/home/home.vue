@@ -14,12 +14,6 @@
                        background-color="#545c64"
                        text-color="#fff"
                        active-text-color="#ffd04b">
-                <el-menu-item active-text-color="#ffd04b" index="0" @click="Open" v-show="isShow">
-                  <i class="el-icon-arrow-right"></i>
-                </el-menu-item>
-                <el-menu-item active-text-color="#ffd04b" index="0" @click="Close" v-show="!isShow">
-                  <i class="el-icon-arrow-left"></i>
-                </el-menu-item>
                 <el-menu-item index="status">
                   <i class="el-icon-view"></i>
                   <span>停车场的总信息展示</span>
@@ -36,9 +30,9 @@
                   <i class="el-icon-upload2"></i>
                   <span>停车记录上传</span>
                 </el-menu-item>
-                <el-menu-item index="userupdate">
+                <el-menu-item index="mmz">
                   <i class="el-icon-upload"></i>
-                  <span>停车场管理员信息修改</span>
+                  <span>管理员信息修改</span>
                 </el-menu-item>
               </el-menu>
             </div>
@@ -59,10 +53,10 @@ export default {
     return {
       city: '',
       defaultActive: 'status',
-      isUnique_opened: true,
-      isCollapse_transition: false,
-      isCollapse: true,
-      isShow: true
+      isUnique_opened: false,
+      isCollapse_transition: true,
+      isCollapse: false,
+      isShow: false
     }
   },
   methods: {

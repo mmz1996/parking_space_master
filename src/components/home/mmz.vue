@@ -1,15 +1,15 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场管理员信息更改</div>
+    <div class="title">管理员</div>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="账号所属管理员姓名">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="管理员的联系方式">
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.number"></el-input>
       </el-form-item>
       <el-form-item label="管理员的身份证号码">
-        <el-input v-model="form.name"></el-input>
+        <el-input v-model="form.id"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">提交</el-button>
@@ -21,7 +21,16 @@
 
 <script>
 export default {
-  name: 'userupdate'
+  name: 'mmz',
+  data () {
+    return {
+      form: {
+        name: '',
+        number: '',
+        id: ''
+      }
+    }
+  }
 }
 </script>
 
