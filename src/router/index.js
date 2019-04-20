@@ -33,6 +33,16 @@ export default new Router({
         path: 'find',
         component: require('@/components/home/find/').default,
         name: 'find'
+      },
+      {
+        path: 'update',
+        component: require('@/components/home/update/').default,
+        name: 'update'
+      },
+      {
+        path: 'userupdate',
+        component: require('@/components/home/userupdate/').default,
+        name: 'userupdate'
       }
       ]
     }

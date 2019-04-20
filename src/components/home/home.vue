@@ -22,7 +22,7 @@
                 </el-menu-item>
                 <el-menu-item index="status">
                   <i class="el-icon-view"></i>
-                  <span>信息</span>
+                  <span>停车场的总信息展示</span>
                 </el-menu-item>
                 <el-menu-item index="control">
                   <i class="el-icon-edit"></i>
@@ -31,6 +31,14 @@
                 <el-menu-item index="find">
                   <i class="el-icon-search"></i>
                   <span>信息管理</span>
+                </el-menu-item>
+                <el-menu-item index="update">
+                  <i class="el-icon-upload2"></i>
+                  <span>停车记录上传</span>
+                </el-menu-item>
+                <el-menu-item index="userupdate">
+                  <i class="el-icon-upload"></i>
+                  <span>停车场管理员信息修改</span>
                 </el-menu-item>
               </el-menu>
             </div>
