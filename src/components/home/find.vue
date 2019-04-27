@@ -3,19 +3,19 @@
     <div class="from-warpper">
       <div class="title">停车场信息修改</div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="收费标准" prop="id">
-          <el-input v-model="ruleForm.id"></el-input>
+        <el-form-item label="收费标准" prop="charging_standard">
+          <el-input v-model="ruleForm.charging_standard"></el-input>
         </el-form-item>
-        <el-form-item label="停车场地址" prop="name">
+        <el-form-item label="停车场地址" prop="address">
+          <el-input v-model="ruleForm.address"></el-input>
+        </el-form-item>
+        <el-form-item label="停车场名称" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="停车场名称" prop="space_num">
-          <el-input v-model="ruleForm.space_num"></el-input>
-        </el-form-item>
-        <el-form-item label="停车场经度" prop="desc">
+        <el-form-item label="停车场经度" prop="longitude">
           <el-input  v-model="ruleForm.longitude"></el-input>
         </el-form-item>
-        <el-form-item label="停车场纬度" prop="desc">
+        <el-form-item label="停车场纬度" prop="latitude">
           <el-input  v-model="ruleForm.latitude"></el-input>
         </el-form-item>
         <div class="button-warpper">
@@ -30,40 +30,56 @@
 </template>
 
 <script>
-
+import { message } from '../../api/api'
 export default {
   name: 'find',
   data  () {
     return {
       ruleForm: {
-        id: '',
+        address: '',
         name: '',
-        space_num: '',
-        desc: '',
-        address: ''
+        latitude: '',
+        longitude: '',
+        charging_standard: ''
       },
       rules: {
-        id: [
-          { required: true, message: '请输入停车场收费标准', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+        address: [
+          { required: true, message: '请输入停车场地址', trigger: 'blur' }
         ],
         name: [
-          { required: true, message: '请输入停车场地址', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+          { required: true, message: '请输入停车场名称', trigger: 'blur' }
         ],
-        space_num: [
-          { required: true, message: '请输入停车场名称', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+        charging_standard: [
+          { required: true, message: '请输入停车场收费标准', trigger: 'blur' }
         ],
         longitude: [
-          { required: true, message: '请输入停车场经度', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+          { required: true, message: '请输入停车场经度', trigger: 'blur' }
         ],
         latitude: [
-          { required: true, message: '请输入停车场纬度', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+          { required: true, message: '请输入停车场纬度', trigger: 'blur' }
         ]
       }
+    }
+  },
+  methods: {
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          message({
+            address: this.address,
+            name: this.name,
+            latitude: this.latitude,
+            longitude: this.longitude,
+            charging_standard: this.charging_standard
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm (formName) {
+      this.$refs[formName].resetFields()
     }
   }
 }

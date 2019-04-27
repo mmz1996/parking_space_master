@@ -2,11 +2,11 @@
   <div class="from-warpper">
     <div class="title">停车场车位修改</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="总车位数目" prop="id">
-        <el-input v-model="ruleForm.id"></el-input>
+      <el-form-item label="总车位数目" prop="space_num">
+        <el-input v-model="ruleForm.space_num"></el-input>
       </el-form-item>
-      <el-form-item label="损坏车位数量" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
+      <el-form-item label="损坏车位数量" prop="broken_num">
+        <el-input v-model="ruleForm.broken_num"></el-input>
       </el-form-item>
       <div class="button-warpper">
         <div class="button">
@@ -19,35 +19,22 @@
 </template>
 
 <script>
+import { number } from '../../api/api'
 import axios from 'axios'
 export default {
   name: 'control',
   data  () {
     return {
       ruleForm: {
-        id: '',
-        name: '',
         space_num: '',
-        desc: '',
-        address: ''
+        broken_num: ''
       },
       rules: {
-        id: [
-          { required: true, message: '请输入停车场id', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
-        ],
-        name: [
-          { required: true, message: '请输入停车场名称', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
-        ],
         space_num: [
-          { required: true, message: '请填写车位数目', trigger: 'blur' }
+          { required: true, message: '请输入停车场车位总数量', trigger: 'blur' }
         ],
-        desc: [
-          { required: true, message: '请填写停车场描述', trigger: 'blur' }
-        ],
-        address: [
-          { required: true, message: '请填写停车场地址', trigger: 'blur' }
+        broken_num: [
+          { required: true, message: '请填写停车场损坏数量', trigger: 'blur' }
         ]
       }
     }
@@ -56,8 +43,10 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.select)
-          console.log(this.car)
+          number({
+            space_num: this.ruleForm.space_num,
+            broken_num: this.ruleForm.broken_num
+          })
         } else {
           console.log('error submit!!')
           return false
