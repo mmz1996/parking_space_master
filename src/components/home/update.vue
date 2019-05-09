@@ -3,11 +3,11 @@
     <div class="title">停车场停车记录上传</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="车牌号码">
-        <el-input v-model="form.car_number"></el-input>
+        <el-input v-model="ruleForm.car_number"></el-input>
       </el-form-item>
       <el-form-item label="车辆进入时间">
         <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.in_time" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.in_time" style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
       <div class="button-warpper">
