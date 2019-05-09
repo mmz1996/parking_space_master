@@ -2,13 +2,13 @@
   <div class="from-warpper">
     <div class="title">管理员</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="收费标准" prop="administrator_name">
+      <el-form-item label="管理员的姓名" prop="administrator_name">
         <el-input v-model="ruleForm.administrator_name"></el-input>
       </el-form-item>
-      <el-form-item label="停车场地址" prop="administrator_tell">
+      <el-form-item label="管理员的联系方式" prop="administrator_tell">
         <el-input v-model="ruleForm.administrator_tell"></el-input>
       </el-form-item>
-      <el-form-item label="停车场名称" prop="administrator_id">
+      <el-form-item label="管理员的身份证号码" prop="administrator_id">
         <el-input v-model="ruleForm.administrator_id"></el-input>
       </el-form-item>
       <div class="button-warpper">
