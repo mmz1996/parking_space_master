@@ -10,6 +10,11 @@
           <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.in_time" style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
+      <el-form-item label="车辆离开时间">
+        <el-col :span="11">
+          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.out_time" style="width: 100%;"></el-date-picker>
+        </el-col>
+      </el-form-item>
       <div class="button-warpper">
         <div class="button">
           <el-button type="primary" @click="submitForm('ruleForm')">完成修改</el-button>
@@ -28,7 +33,8 @@ export default {
     return {
       ruleForm: {
         car_number: '',
-        in_time: ''
+        in_time: '',
+        out_time: ''
       },
       rules: {
         car_number: [
@@ -36,6 +42,9 @@ export default {
         ],
         in_time: [
           { required: true, message: '请记录进入的时间', trigger: 'blur' }
+        ],
+        out_time: [
+          { required: true, message: '请记录离开的时间', trigger: 'blur' }
         ]
       }
     }

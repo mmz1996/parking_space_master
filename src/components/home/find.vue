@@ -6,6 +6,9 @@
         <el-form-item label="收费标准" prop="charging_standard">
           <el-input v-model="ruleForm.charging_standard"></el-input>
         </el-form-item>
+        <el-form-item label="停车场简介" prop="business_brief">
+          <el-input v-model="ruleForm.business_brief"></el-input>
+        </el-form-item>
         <el-form-item label="停车场地址" prop="address">
           <el-input v-model="ruleForm.address"></el-input>
         </el-form-item>
@@ -40,7 +43,8 @@ export default {
         name: '',
         latitude: '',
         longitude: '',
-        charging_standard: ''
+        charging_standard: '',
+        business_brief: ''
       },
       rules: {
         address: [
@@ -51,6 +55,9 @@ export default {
         ],
         charging_standard: [
           { required: true, message: '请输入停车场收费标准', trigger: 'blur' }
+        ],
+        business_brief: [
+          { required: true, message: '请输入停车场简介', trigger: 'blur' }
         ],
         longitude: [
           { required: true, message: '请输入停车场经度', trigger: 'blur' }
@@ -70,7 +77,8 @@ export default {
             name: this.name,
             latitude: this.latitude,
             longitude: this.longitude,
-            charging_standard: this.charging_standard
+            charging_standard: this.charging_standard,
+            business_brief: this.business_brief
           })
         } else {
           console.log('error submit!!')

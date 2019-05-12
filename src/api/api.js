@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let host = 'https://www.ohaiyo.vip'
+let host = 'https://api.ohaiyo.vip'
 
 // 登录
 export const login = params => {
