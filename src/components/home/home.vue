@@ -1,9 +1,9 @@
 <template>
     <div>
       <el-container>
-        <el-header>欢迎来到JLU_PISP管理系统</el-header>
+        <el-header height="100px">欢迎来到JLU_PISP管理系统</el-header>
         <el-container>
-          <el-aside width="200px">
+          <el-aside width="400px">
             <div class="menu-warpper">
               <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                        :unique-opened="isUnique_opened"
@@ -96,23 +96,24 @@ export default {
 
 <style scoped lang="stylus">
   .el-header{
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #409EFF;
+    color: white;
     text-align: center;
-    line-height: 60px;
+    line-height: 80px
   }
 
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: white
     color: #333;
     text-align: center;
-    line-height: 200px;
+    line-height: 400px;
   }
 
   .el-main {
-    background-color: #E9EEF3;
+    background-color: white
     color: #333;
     text-align: center;
+    border solid black
   }
   * {
     box-sizing: border-box;
