@@ -8,8 +8,11 @@
       <el-form-item label="损坏车位数量" prop="broken_num">
         <el-input v-model="ruleForm.broken_num"></el-input>
       </el-form-item>
+      <el-form-item label="当前可以使用车位数量" prop="use_num">
+        <el-input v-model="ruleForm.use_num"></el-input>
+      </el-form-item>
       <el-form-item label="车位实时更新日志" prop="broken_new">
-        <el-input v-model="ruleForm.broken_num"></el-input>
+        <el-input v-model="ruleForm.broken_new"></el-input>
       </el-form-item>
       <div class="button-warpper">
         <div class="button">
@@ -31,7 +34,8 @@ export default {
       ruleForm: {
         space_num: '',
         broken_num: '',
-        broken_new: ''
+        broken_new: '',
+        use_num: ''
       },
       rules: {
         space_num: [
@@ -42,6 +46,9 @@ export default {
         ],
         broken_new: [
           { required: true, message: '请填写停车场车位更新日志', trigger: 'blur' }
+        ],
+        use_num: [
+          { required: true, message: '请填写停车场可使用车位数量', trigger: 'blur' }
         ]
       }
     }
@@ -53,7 +60,8 @@ export default {
           number({
             space_num: this.ruleForm.space_num,
             broken_num: this.ruleForm.broken_num,
-            broken_new: this.ruleForm.broken_new
+            broken_new: this.ruleForm.broken_new,
+            use_num: this.ruleForm.use_num
           })
         } else {
           console.log('error submit!!')

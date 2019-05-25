@@ -1,6 +1,6 @@
 <template>
   <div class="from-warpper">
-    <div class="title">管理员</div>
+    <div class="title">管理员信息修改</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="管理员的姓名" prop="administrator_name">
         <el-input v-model="ruleForm.administrator_name"></el-input>
