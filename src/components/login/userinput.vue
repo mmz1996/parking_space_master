@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-      <div class="title" align="center">登录页面</div>
+      <div class="title" align="center">JLU-PISP系统登录</div>
       <el-row type="flex" justify="center">
         <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-width="80px">
         <el-form-item  prop="username" class="input_box" label="用户名">
@@ -25,7 +25,6 @@
 
 <script>
 import { login } from '../../api/api'
-import router from '../../router'
 export default {
   name: 'userinput',
   data () {
@@ -68,7 +67,7 @@ export default {
             username: this.ruleForm.username,
             password: this.ruleForm.password
           }).then((response) => {
-            router.push({path: '/home'})
+            this.$router.push({path: '/home'})
           })
         } else {
           console.log('error submit!!') // 验证失败
