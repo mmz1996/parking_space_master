@@ -16,6 +16,19 @@ Vue.http = Vue.prototype.$http = axios
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') {
+    sessionStorage.removeItem('user')
+  }
+  let user = JSON.parse(sessionStorage.getItem('user'))
+  if (!user && to.path !== '/') {
+    next({ path: '/' })
+  } else {
+    next()
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

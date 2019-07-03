@@ -4,7 +4,7 @@ let host = 'https://api.ohaiyo.vip'
 
 // 登录
 export const login = params => {
-  return axios.post(`${host}/login/`, params)
+  return axios.post(`${host}/login/`, params).then(res => res.data)
 }
 // 车位数量更新
 export const number = params => {

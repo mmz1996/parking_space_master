@@ -1,26 +1,22 @@
 <template>
-    <div class="box">
-      <div class="title" align="center">JLU-PISP系统登录</div>
-      <el-row type="flex" justify="center">
-        <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-width="80px">
-        <el-form-item  prop="username" class="input_box" label="用户名">
-          <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
-        </el-form-item>
-        <el-form-item prop="password" class="input_box" label="密码">
-          <el-input type="password" v-model="ruleForm.password" placeholder="请输入密码"></el-input>
-        </el-form-item>
-        <!-- <el-form-item label="确认密码" prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass"></el-input>
-        </el-form-item> -->
-        <div class="button-warpper">
-          <div class="button" align="center">
-            <el-button size="mini" type="primary" @click="submitForm('ruleForm')" icon="el-icon-upload">登录</el-button>
-            <el-button size="mini" @click="resetForm('ruleForm')" >重置</el-button>
-          </div>
-        </div>
-      </el-form>
-      </el-row>
+  <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+    <h3 class="title">JLU-PISP系统登录</h3>
+    <el-form-item  prop="username" label="用户名">
+      <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
+    </el-form-item>
+    <el-form-item prop="password" class="input_box" label="密码">
+    <el-input type="password" v-model="ruleForm.password" placeholder="请输入密码"></el-input>
+    </el-form-item>
+  <!-- <el-form-item label="确认密码" prop="checkPass">
+    <el-input type="password" v-model="ruleForm.checkPass"></el-input>
+  </el-form-item> -->
+  <div class="button-warpper">
+    <div class="button" align="center">
+      <el-button size="mini" type="primary" @click="submitForm('ruleForm')" icon="el-icon-upload">登录</el-button>
+      <el-button size="mini" @click="resetForm('ruleForm')" >重置</el-button>
     </div>
+  </div>
+</el-form>
 </template>
 
 <script>
@@ -43,7 +39,6 @@ export default {
       }
     }
     return {
-      labelPosition: 'left',
       ruleForm: {
         username: '',
         password: ''
@@ -56,7 +51,8 @@ export default {
         password: [
           { validator: validatePass, trigger: 'blur' }
         ]
-      }
+      },
+      checked: true
     }
   },
   methods: {
@@ -66,8 +62,10 @@ export default {
           login({
             username: this.ruleForm.username,
             password: this.ruleForm.password
-          }).then((response) => {
-            this.$router.push({path: '/home'})
+          }).then((data) => {
+            sessionStorage.setItem('user', JSON.stringify(this.ruleForm.username))
+            console.log(data)
+            this.$router.push({ path: '/home' })
           })
         } else {
           console.log('error submit!!') // 验证失败
@@ -83,13 +81,25 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.box
-  border  1px  #000000
-  height 370px
-  width: 500px
-  margin: 0 auto
-  position relative
-  top: 50px
-  .title
-    margin 20px
+  .login-container {
+    /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    margin: 100px auto;
+    width: 350px;
+    padding: 35px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+    .title {
+      margin: 0px auto 40px auto;
+      text-align: center;
+      color: #505458;
+    }
+    .remember {
+      margin: 0px 0px 35px 0px;
+    }
+  }
 </style>
