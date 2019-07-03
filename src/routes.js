@@ -1,8 +1,19 @@
+
 let routes = [
   {
     path: '/',
     name: 'login',
     component: require('@/components/login/login').default
+  },
+  {
+    path: '/404',
+    component: require('@/components/home/404/').default,
+    name: '404'
+  },
+  {
+    path: '*',
+    hidden: true,
+    redirect: { path: '/404' }
   },
   {
     path: '/home',

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="titleinfo">JLU-PISP停车场信息管理系统</div>
+    <div class="titleinfo">
+      <img src="../../assets/logo.jpg" alt="" class="img">
+      <p class="title">JLU-PISP停车场信息管理系统</p>
+    </div>
     <userinput></userinput>
   </div>
 </template>
@@ -23,10 +26,14 @@ export default {
     padding: 0;
   } // 去除边框
   .titleinfo
-    padding 30px
     text-align center
     background-color: #409EFF;
     color: white;
     height 100px
     font-size 30px
+    .img
+      float left
+      height:100px
+    .title
+      padding 30px
 </style>

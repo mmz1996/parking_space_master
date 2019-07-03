@@ -1,10 +1,10 @@
 <template>
   <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <h3 class="title">JLU-PISP系统登录</h3>
-    <el-form-item  prop="username" label="用户名">
+    <el-form-item  prop="username" >
       <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
     </el-form-item>
-    <el-form-item prop="password" class="input_box" label="密码">
+    <el-form-item prop="password" class="input_box" >
     <el-input type="password" v-model="ruleForm.password" placeholder="请输入密码"></el-input>
     </el-form-item>
   <!-- <el-form-item label="确认密码" prop="checkPass">
