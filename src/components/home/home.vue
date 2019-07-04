@@ -1,47 +1,43 @@
 <template>
     <div>
-      <el-container>
-        <el-header height="100px">欢迎来到JLU_PISP管理系统</el-header>
-        <el-container>
-          <el-aside width="400px">
-            <div class="menu-warpper">
-              <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                       :unique-opened="isUnique_opened"
-                       ::default-active="defaultActive"
-                       :collapse-transition="isCollapse_transition"
-                       :collapse="isCollapse"
-                       @select="handleSelect"
-                       background-color="#545c64"
-                       text-color="#fff"
-                       active-text-color="#ffd04b">
-                <el-menu-item index="status">
-                  <i class="el-icon-view"></i>
-                  <span>停车场的总信息展示</span>
-                </el-menu-item>
-                <el-menu-item index="control">
-                  <i class="el-icon-edit"></i>
-                  <span>车位管理</span>
-                </el-menu-item>
-                <el-menu-item index="find">
-                  <i class="el-icon-search"></i>
-                  <span>信息管理</span>
-                </el-menu-item>
-                <el-menu-item index="update">
-                  <i class="el-icon-upload2"></i>
-                  <span>停车记录上传</span>
-                </el-menu-item>
-                <el-menu-item index="mmz">
-                  <i class="el-icon-upload"></i>
-                  <span>管理员信息修改</span>
-                </el-menu-item>
-              </el-menu>
-            </div>
-          </el-aside>
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-container>
-      </el-container>
+      <el-row class="container">
+        <el-col :span="24" class="header">
+          <el-col  class="logo">
+            JLU_PISP管理系统
+          </el-col>
+        </el-col>
+        <el-col :span="24" class="main">
+          <aside>
+            <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: #F2F6FC">
+              <el-menu-item index="status">
+                <i class="el-icon-view"></i>
+                <span>停车场的总信息展示</span>
+              </el-menu-item>
+              <el-menu-item index="control">
+                <i class="el-icon-edit"></i>
+                <span>车位管理</span>
+              </el-menu-item>
+              <el-menu-item index="find">
+                <i class="el-icon-search"></i>
+                <span>信息管理</span>
+              </el-menu-item>
+              <el-menu-item index="update">
+                <i class="el-icon-upload2"></i>
+                <span>停车记录上传</span>
+              </el-menu-item>
+              <el-menu-item index="mmz">
+                <i class="el-icon-upload"></i>
+                <span>管理员信息修改</span>
+              </el-menu-item>
+            </el-menu>
+          </aside>
+          <section class="content-container">
+              <el-col :span="24" class="content-wrapper">
+                  <router-view></router-view>
+              </el-col>
+          </section>
+        </el-col>
+      </el-row>
     </div>
 </template>
 
@@ -60,27 +56,13 @@ export default {
     }
   },
   methods: {
-    handleSelect (index) {
+    handleselect  (index) {
       if (index === '0') {
         return false
       }
       this.$router.push({
         name: index
       })
-    },
-    Open () {
-      this.isCollapse = false
-      this.isShow = false
-    },
-    Close () {
-      this.isCollapse = true
-      this.isShow = true
-    },
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
     },
     getHomeInfo () {
       axios.get('/static/json/city.json')
@@ -95,51 +77,85 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .el-header{
-    background-color: #409EFF;
-    color: white;
-    text-align: center;
-    line-height: 80px
-  }
+  .container {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    .header {
+      height: 60px;
+      line-height: 60px;
+      background:  #20a0ff
+      color:#fff;
+      .logo {
+        //width:230px;
+        height:60px;
+        font-size: 22px;
+        padding-left:20px;
+        padding-right:20px;
+        border-color: rgba(238,241,146,0.3);
+        border-right-width: 1px;
+        border-right-style: solid;
+      }
+    }
+    .main {
+      display: flex;
+      // background: #324057;
+      position: absolute;
+      top: 60px;
+      bottom: 0px;
+      overflow: hidden;
+      aside {
+        flex:0 0 230px;
+        width: 230px;
+        // position: absolute;
+        // top: 0px;
+        // bottom: 0px;
+        .el-menu{
+          height: 100%;
+        }
+        .collapsed{
+          width:60px;
+          .item{
+            position: relative;
+          }
+          .submenu{
+            position:absolute;
+            top:0px;
+            left:60px;
+            z-index:99999;
+            height:auto;
+            display:none;
+          }
 
-  .el-aside {
-    background-color: #545c64
-    color: #333;
-    text-align: center;
-    line-height: 400px;
+        }
+      }
+      .content-container {
+        // background: #f1f2f7;
+        flex:1;
+        // position: absolute;
+        // right: 0px;
+        // top: 0px;
+        // bottom: 0px;
+        // left: 230px;
+        overflow-y: scroll;
+        padding-left: 20px;
+        .breadcrumb-container {
+          //margin-bottom: 15px;
+          .title {
+            width: 200px;
+            float: left;
+            color: #475669;
+          }
+          .breadcrumb-inner {
+            float: right;
+          }
+        }
+        .content-wrapper {
+          background-color: #fff;
+          box-sizing: border-box;
+        }
+      }
+    }
   }
-
-  .el-main {
-    background-color: white
-    color: #333;
-    text-align: center;
-    border solid black
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  } // 去除边框
-  .window
-    position fixed
-    display -webkit-flex
-    display flex
-    justify-content flex-start
-    top 26px
-    left 0
-    right 0
-    bottom 0
-    .menu-warpper
-      height 100%
-      background-color #545c64
-      .el-menu-vertical-demo:not(.el-menu--collapse)
-        position relative
-        max-width 130px
-        min-height 1000px
-    .warpper
-      position relative
-      width 100%
-      height 100%
-      margin-left -1px
-      background-color rgb(200,200,200)
 </style>
