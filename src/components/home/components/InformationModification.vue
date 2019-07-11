@@ -2,7 +2,7 @@
   <div>
     <div class="from-warpper">
       <div class="title">停车场信息修改</div>
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
         <el-form-item label="收费标准" prop="charging_standard">
           <el-input v-model="ruleForm.charging_standard"></el-input>
         </el-form-item>
@@ -21,11 +21,9 @@
         <el-form-item label="停车场纬度" prop="latitude">
           <el-input  v-model="ruleForm.latitude"></el-input>
         </el-form-item>
-        <div class="button-warpper">
-          <div class="button">
-            <el-button type="primary" @click="submitForm('ruleForm')">完成修改</el-button>
-            <el-button @click="resetForm('ruleForm')">全部重置</el-button>
-          </div>
+        <div class="button">
+          <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
+          <el-button @click="resetForm('ruleForm')">全部重置</el-button>
         </div>
       </el-form>
     </div>
@@ -33,9 +31,9 @@
 </template>
 
 <script>
-import { message } from '../../api/api'
+import { message } from '../../../api/api'
 export default {
-  name: 'find',
+  name: 'InformationModification',
   data  () {
     return {
       ruleForm: {
@@ -101,16 +99,10 @@ export default {
     border-radius 10px
     background-color rgba(255, 255, 255, 0.5)
     .title
-      text-align center
       height 30px
       line-height 30px
-      font-size 20px
+      font-size 25px
       margin-bottom 30px
-    .button-warpper
-      position relative
-      margin 0 auto
-      .button
-        position relative
-        margin 0 auto
-        width 160px
+    .button
+      text-align center
 </style>

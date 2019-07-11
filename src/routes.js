@@ -20,34 +20,34 @@ let routes = [
     name: 'home',
     component: require('@/components/home/home').default,
     children: [{
-      path: 'control',
-      component: require('@/components/home/control').default,
-      name: 'control'
+      path: 'ParkingspaceModification',
+      component: require('@/components/home/components/ParkingspaceModification').default,
+      name: 'ParkingspaceModification'
     },
     {
       path: 'status',
-      component: require('@/components/home/StatusWindow/').default,
+      component: require('@/components/home/components/StatusWindow/').default,
       name: 'status'
     },
     {
-      path: 'setting',
-      component: require('@/components/home/setting/').default,
-      name: 'setting'
+      path: 'InformationModification',
+      component: require('@/components/home/components/InformationModification/').default,
+      name: 'InformationModification'
     },
     {
-      path: 'find',
-      component: require('@/components/home/find/').default,
-      name: 'find'
+      path: 'ParkingFees',
+      component: require('@/components/home/components/ParkingFees/').default,
+      name: 'ParkingFees'
     },
     {
-      path: 'update',
-      component: require('@/components/home/update/').default,
-      name: 'update'
+      path: 'ParkingrecordModification',
+      component: require('@/components/home/components/ParkingrecordModification/').default,
+      name: 'ParkingrecordModification'
     },
     {
-      path: 'mmz',
-      component: require('@/components/home/mmz/').default,
-      name: 'mmz'
+      path: 'AdministratorModification',
+      component: require('@/components/home/components/AdministratorModification/').default,
+      name: 'AdministratorModification'
     }
     ]
   }

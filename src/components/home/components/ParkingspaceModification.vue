@@ -1,7 +1,7 @@
 <template>
   <div class="from-warpper">
     <div class="title">停车场车位修改</div>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm" label-position="left">
       <el-form-item label="总车位数目" prop="space_num">
         <el-input v-model="ruleForm.space_num"></el-input>
       </el-form-item>
@@ -12,23 +12,21 @@
         <el-input v-model="ruleForm.use_num"></el-input>
       </el-form-item>
       <el-form-item label="车位实时更新日志" prop="broken_new">
-        <el-input v-model="ruleForm.broken_new"></el-input>
+        <el-input type="textarea" v-model="ruleForm.broken_new"></el-input>
       </el-form-item>
-      <div class="button-warpper">
-        <div class="button">
-          <el-button type="primary" @click="submitForm('ruleForm')">完成修改</el-button>
-          <el-button @click="resetForm('ruleForm')">全部重置</el-button>
-        </div>
+      <div class="button">
+        <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
+        <el-button @click="resetForm('ruleForm')">全部重置</el-button>
       </div>
     </el-form>
   </div>
 </template>
 
 <script>
-import { number } from '../../api/api'
+import { number } from '../../../api/api'
 import axios from 'axios'
 export default {
-  name: 'control',
+  name: 'ParkingspaceModification',
   data  () {
     return {
       ruleForm: {
@@ -94,18 +92,12 @@ export default {
     padding 20px
     margin-top 30px
     border-radius 10px
-    background-color rgba(255, 255, 255, 0.5)
+    background-color white
     .title
-      text-align center
       height 30px
       line-height 30px
-      font-size 20px
+      font-size 25px
       margin-bottom 30px
-    .button-warpper
-      position relative
-      margin 0 auto
-      .button
-        position relative
-        margin 0 auto
-        width 160px
+    .button
+      text-align center
 </style>

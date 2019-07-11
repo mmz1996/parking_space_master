@@ -2,32 +2,41 @@
     <div>
       <el-row class="container">
         <el-col :span="24" class="header">
+          <img src="../../assets/logo.jpg" alt="" class="img">
           <el-col  class="logo">
-            JLU_PISP管理系统
+            JLU_PISP停车场管理系统
           </el-col>
         </el-col>
         <el-col :span="24" class="main">
           <aside>
-            <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: #F2F6FC">
+            <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: #E4E7ED">
               <el-menu-item index="status">
                 <i class="el-icon-view"></i>
                 <span>停车场的总信息展示</span>
               </el-menu-item>
-              <el-menu-item index="control">
+              <el-menu-item index="ParkingspaceModification">
                 <i class="el-icon-edit"></i>
                 <span>车位管理</span>
               </el-menu-item>
-              <el-menu-item index="find">
+              <el-menu-item index="InformationModification">
                 <i class="el-icon-search"></i>
                 <span>信息管理</span>
               </el-menu-item>
-              <el-menu-item index="update">
+              <el-menu-item index="ParkingrecordModification">
                 <i class="el-icon-upload2"></i>
                 <span>停车记录上传</span>
               </el-menu-item>
-              <el-menu-item index="mmz">
+              <el-menu-item index="AdministratorModification">
                 <i class="el-icon-upload"></i>
                 <span>管理员信息修改</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingFees">
+                <i class="el-icon-info"></i>
+                <span>停车场收费规则</span>
+              </el-menu-item>
+              <el-menu-item @click="goback">
+                <i class="el-icon-close"></i>
+                <span>退出</span>
               </el-menu-item>
             </el-menu>
           </aside>
@@ -64,13 +73,8 @@ export default {
         name: index
       })
     },
-    getHomeInfo () {
-      axios.get('/static/json/city.json')
-        .then(this.getHomeInfoSucc)
-    },
-    getHomeInfoSucc (res) {
-      console.log(res.data[0].code)
-      this.city = res.data
+    goback () {
+      this.$router.push('/')
     }
   }
 }
@@ -83,13 +87,18 @@ export default {
     bottom: 0px;
     width: 100%;
     .header {
-      height: 60px;
-      line-height: 60px;
+      height: 100px;
+      line-height: 100px;
       background:  #20a0ff
-      color:#fff;
+      .img {
+        position: absolute;
+        height: 100px
+      }
       .logo {
         //width:230px;
-        height:60px;
+        text-align center
+        color:#fff;
+        height:100px;
         font-size: 22px;
         padding-left:20px;
         padding-right:20px;
@@ -102,7 +111,7 @@ export default {
       display: flex;
       // background: #324057;
       position: absolute;
-      top: 60px;
+      top: 100px;
       bottom: 0px;
       overflow: hidden;
       aside {
