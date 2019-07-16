@@ -9,6 +9,7 @@
       <p class="tag">停车场的可使用车位数量 {{use_num}}</p>
       <p class="tag">停车场的简介{{desc}}</p>
       <p class="tag">停车场的收费标准 {{charging_standard}}</p>
+      <p>{{token}}</p>
     </div>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default {
       desc: '213',
       space_num: '213',
       use_num: '213',
-      charging_standard: ''
+      charging_standard: '',
+      token: this.$store.state.token
     }
   },
   mounted: function () {

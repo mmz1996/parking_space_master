@@ -62,8 +62,11 @@ export default {
             username: this.ruleForm.username,
             password: this.ruleForm.password
           }).then((response) => {
-            console.log(response)
-            sessionStorage.setItem('user', JSON.stringify(this.ruleForm.username))
+            // this.$router.push('/home')
+            let token = response.data.token
+            // console.log(response)
+            // console.log(this.$store.state.token)
+            this.$store.commit('set_token', token)
             // let { code } = data
             // if (code !== 200) {
             //   this.$message({
@@ -77,7 +80,11 @@ export default {
               type: 'success',
               showClose: true
             })
-            this.$router.push({ path: '/home' })
+            this.$router.push('/home')
+            // if (this.$store.state.token) {
+            //   this.$router.push('/home')
+            //   console.log(this.$store.state.token)
+            // }
           })
             .catch((error) => {
               console.log(error.response)

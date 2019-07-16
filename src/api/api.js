@@ -1,34 +1,18 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'https://api.ohaiyo.vip'
-// axios.defaults.headers.common['Authentication-Token'] = this.$store.state.token
-// let host = 'https://api.ohaiyo.vip'
-// 添加请求拦截器，在请求头中加token
-// axios.interceptors.request.use(
-//   config => {
-//     if (localStorage.getItem('Authorization')) {
-//       config.headers.Authorization = localStorage.getItem('Authorization')
-//     }
-//
-//     return config
-//   },
-//   error => {
-//     return Promise.reject(error)
-//   })
-
-// axios.interceptors.request.use(config => {
-//   if (this.$store.state.token) {
-//     config.headers.common['Authentication-Token'] = this.$store.state.token
-//   }
-//
-//   return config
-// }, error => {
-//   return Promise.reject(error)
-// })
+axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('Authorization')
 // 登录
 export const login = params => {
   return axios.post(`/login/`, params)
 }
-
+// export const login = params => {
+//   return axios({
+//     url: '/login/',
+//     data: params,
+//     method: 'post'
+//     // headers: {'Authorization': 'JWT ' + this.$store.state.token}
+//   })
+// }
 // 车位数量更新
 export const space = params => {
   return axios.post(`/space/`, params)
