@@ -1,19 +1,18 @@
 <template>
   <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <h3 class="title">JLU-PISP系统登录</h3>
-    <el-form-item  prop="username" >
+    <el-form-item  prop="username">
       <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
     </el-form-item>
+    <!--这是用户名的输入-->
     <el-form-item prop="password" class="input_box" >
-    <el-input type="password" v-model="ruleForm.password" placeholder="请输入密码"></el-input>
+    <el-input type="password" v-model="ruleForm.password" placeholder="请输入密码" show-password></el-input>
     </el-form-item>
-  <!-- <el-form-item label="确认密码" prop="checkPass">
-    <el-input type="password" v-model="ruleForm.checkPass"></el-input>
-  </el-form-item> -->
+    <!--这是密码的输入-->
   <div class="button-warpper">
     <div class="button" align="center">
       <el-button size="mini" type="primary" @click="submitForm('ruleForm')" icon="el-icon-upload">登录</el-button>
-      <el-button size="mini" @click="resetForm('ruleForm')" >重置</el-button>
+      <el-button size="mini"  type="danger" @click="resetForm('ruleForm')" >重置</el-button>
     </div>
   </div>
 </el-form>
@@ -26,7 +25,7 @@ export default {
   data () {
     var validatePass = (rule, value, callback) => {
       if (value === '') {
-        return callback(new Error('请数密码'))
+        return callback(new Error('请输入密码'))
       } else {
         callback()
       }
@@ -62,13 +61,39 @@ export default {
           login({
             username: this.ruleForm.username,
             password: this.ruleForm.password
-          }).then((data) => {
+          }).then((response) => {
+            console.log(response)
             sessionStorage.setItem('user', JSON.stringify(this.ruleForm.username))
-            console.log(data)
+            // let { code } = data
+            // if (code !== 200) {
+            //   this.$message({
+            //     showClose: true,
+            //     message: '登录失败，密码错误',
+            //     type: 'error'
+            //   })
+            // }
+            this.$message({
+              message: '登录成功',
+              type: 'success',
+              showClose: true
+            })
             this.$router.push({ path: '/home' })
           })
+            .catch((error) => {
+              console.log(error.response)
+              this.$message({
+                showClose: true,
+                message: '登录失败，用户名密码错误',
+                type: 'error'
+              })
+            })
         } else {
           console.log('error submit!!') // 验证失败
+          this.$message({
+            showClose: true,
+            message: '请检查用户名输入',
+            type: 'error'
+          })
           return false
         }
       })

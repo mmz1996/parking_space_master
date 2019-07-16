@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="titleinfo">
-      <img src="../../assets/logo.jpg" alt="" class="img">
       <p class="title">JLU-PISP停车场信息管理系统</p>
     </div>
     <userinput></userinput>
@@ -19,8 +18,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import url("//unpkg.com/element-ui@2.4.4/lib/theme-chalk/index.css");
-  * {
+  *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -28,12 +26,9 @@ export default {
   .titleinfo
     text-align center
     background-color: #409EFF;
-    color: white;
+    color: white
     height 100px
     font-size 30px
-    .img
-      float left
-      height:100px
     .title
-      padding 30px
+      line-height 100px
 </style>

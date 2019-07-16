@@ -5,14 +5,14 @@
       <el-form-item label="总车位数目" prop="space_num">
         <el-input v-model="ruleForm.space_num"></el-input>
       </el-form-item>
-      <el-form-item label="损坏车位数量" prop="broken_num">
+      <el-form-item label="无法使用车位数量" prop="broken_num">
         <el-input v-model="ruleForm.broken_num"></el-input>
       </el-form-item>
       <el-form-item label="当前可以使用车位数量" prop="use_num">
         <el-input v-model="ruleForm.use_num"></el-input>
       </el-form-item>
       <el-form-item label="车位实时更新日志" prop="broken_new">
-        <el-input type="textarea" v-model="ruleForm.broken_new"></el-input>
+        <el-input type="textarea" v-model="ruleForm.broken_new" autosize></el-input>
       </el-form-item>
       <div class="button">
         <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
@@ -40,7 +40,7 @@ export default {
           { required: true, message: '请输入停车场车位总数量', trigger: 'blur' }
         ],
         broken_num: [
-          { required: true, message: '请填写停车场损坏数量', trigger: 'blur' }
+          { required: true, message: '请填写停车场无法使用车位数量', trigger: 'blur' }
         ],
         broken_new: [
           { required: true, message: '请填写停车场车位更新日志', trigger: 'blur' }
@@ -88,6 +88,7 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
+    background-color black
     width 600px
     padding 20px
     margin-top 30px

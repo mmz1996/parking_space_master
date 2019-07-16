@@ -1,20 +1,15 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场停车记录上传</div>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
+    <div class="title">停车场进入车辆上传</div>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm" label-position="left">
       <el-form-item label="车牌号码">
         <el-input v-model="ruleForm.car_number"></el-input>
       </el-form-item>
-      <el-form-item label="车辆进入时间">
-        <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.in_time" style="width: 100%;"></el-date-picker>
-        </el-col>
-      </el-form-item>
-      <el-form-item label="车辆离开时间">
-        <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.out_time" style="width: 100%;"></el-date-picker>
-        </el-col>
-      </el-form-item>
+      <!--<el-form-item label="车辆进入时间">-->
+        <!--<el-col :span="11">-->
+          <!--<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.in_time" style="width: 100%;"></el-date-picker>-->
+        <!--</el-col>-->
+      <!--</el-form-item>-->
       <div class="button">
         <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
         <el-button @click="resetForm('ruleForm')">全部重置</el-button>
@@ -26,13 +21,13 @@
 <script>
 import { record } from '../../../api/api'
 export default {
-  name: 'ParkingrecordModification',
+  name: 'ParkinginrecordModification',
   data () {
     return {
       ruleForm: {
         car_number: '',
-        in_time: '',
-        out_time: ''
+        in_time: ''
+        // out_time: ''
       },
       rules: {
         car_number: [
@@ -51,10 +46,12 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          record({
-            name: this.name,
-            date1: this.date1
-          })
+          this.in_time = new Date()
+          // record({
+          //   name: this.name,
+          //   in_time: new Date()
+          // })
+          console.log(this.in_time)
         } else {
           console.log('error submit!!')
           return false

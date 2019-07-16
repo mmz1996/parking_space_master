@@ -4,10 +4,10 @@
       <div class="title">停车场信息修改</div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
         <el-form-item label="收费标准" prop="charging_standard">
-          <el-input v-model="ruleForm.charging_standard"></el-input>
+          <el-input v-model="ruleForm.charging_standard" autosize type="textarea"></el-input>
         </el-form-item>
         <el-form-item label="停车场简介" prop="business_brief">
-          <el-input v-model="ruleForm.business_brief"></el-input>
+          <el-input v-model="ruleForm.business_brief" autosize type="textarea"></el-input>
         </el-form-item>
         <el-form-item label="停车场地址" prop="address">
           <el-input v-model="ruleForm.address"></el-input>

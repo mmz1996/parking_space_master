@@ -3,7 +3,7 @@
     <div class="title">管理员信息修改</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
       <el-form-item label="管理员姓名" prop="administrator_name">
-        <el-input v-model="ruleForm.administrator_name" color="#000000"></el-input>
+        <el-input v-model="ruleForm.administrator_name"></el-input>
       </el-form-item>
       <el-form-item label="管理员联系方式" prop="administrator_tell">
         <el-input v-model="ruleForm.administrator_tell"></el-input>
@@ -67,7 +67,7 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    width 600px
+    width 500px
     padding 20px
     margin-top 30px
     border-radius 10px
@@ -79,6 +79,4 @@ export default {
       margin-bottom 30px
     .button
       text-align center
-    .el-input
-      color blanchedalmond
 </style>

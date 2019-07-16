@@ -2,6 +2,9 @@
   <div class="from-warpper">
     <div class="title">停车场详细收费规则</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="500px" class="demo-ruleForm" label-position="left">
+      <el-form-item label="在若干分钟内停车不收费" prop="first_minutes" >
+        <el-input v-model="ruleForm.first_minutes"></el-input>
+      </el-form-item>
       <el-form-item label="在若干小时内" prop="first_hours" >
           <el-input v-model="ruleForm.first_hours"></el-input>
       </el-form-item>
@@ -30,11 +33,15 @@ export default {
     return {
       ruleForm: {
         first_hours: '',
+        first_minutes: '',
         first_charge: '',
         last_hours: '',
         last_charge: ''
       },
       rules: {
+        first_minutes: [
+          { required: true, message: '请输入时间限制', trigger: 'blur' }
+        ],
         first_hours: [
           { required: true, message: '请输入时间限制', trigger: 'blur' }
         ],

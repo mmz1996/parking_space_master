@@ -40,9 +40,14 @@ let routes = [
       name: 'ParkingFees'
     },
     {
-      path: 'ParkingrecordModification',
-      component: require('@/components/home/components/ParkingrecordModification/').default,
-      name: 'ParkingrecordModification'
+      path: 'ParkinginrecordModification',
+      component: require('@/components/home/components/ParkinginrecordModification/').default,
+      name: 'ParkinginrecordModification'
+    },
+    {
+      path: 'ParkingoutrecordModification',
+      component: require('@/components/home/components/ParkingoutrecordModification/').default,
+      name: 'ParkingoutrecordModification'
     },
     {
       path: 'AdministratorModification',
