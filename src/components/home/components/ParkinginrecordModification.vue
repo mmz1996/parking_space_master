@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { record } from '../../../api/api'
+// import { record } from '../../../api/api'
 export default {
   name: 'ParkinginrecordModification',
   data () {
@@ -43,21 +43,21 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.in_time = new Date()
-          // record({
-          //   name: this.name,
-          //   in_time: new Date()
-          // })
-          console.log(this.in_time)
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
+    // submitForm (formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       this.in_time = new Date()
+    //       // record({
+    //       //   name: this.name,
+    //       //   in_time: new Date()
+    //       // })
+    //       console.log(this.in_time)
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }

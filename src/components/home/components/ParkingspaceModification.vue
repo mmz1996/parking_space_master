@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { number } from '../../../api/api'
+// import { number } from '../../../api/api'
 import axios from 'axios'
 export default {
   name: 'ParkingspaceModification',
@@ -52,21 +52,21 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          number({
-            space_num: this.ruleForm.space_num,
-            broken_num: this.ruleForm.broken_num,
-            broken_new: this.ruleForm.broken_new,
-            use_num: this.ruleForm.use_num
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
+    // submitForm (formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       number({
+    //         space_num: this.ruleForm.space_num,
+    //         broken_num: this.ruleForm.broken_num,
+    //         broken_new: this.ruleForm.broken_new,
+    //         use_num: this.ruleForm.use_num
+    //       })
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     },

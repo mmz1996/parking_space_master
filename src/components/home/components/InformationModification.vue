@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { message } from '../../../api/api'
+// import { message } from '../../../api/api'
 export default {
   name: 'InformationModification',
   data  () {
@@ -67,23 +67,23 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          message({
-            address: this.address,
-            name: this.name,
-            latitude: this.latitude,
-            longitude: this.longitude,
-            charging_standard: this.charging_standard,
-            business_brief: this.business_brief
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
+    // submitForm (formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       message({
+    //         address: this.address,
+    //         name: this.name,
+    //         latitude: this.latitude,
+    //         longitude: this.longitude,
+    //         charging_standard: this.charging_standard,
+    //         business_brief: this.business_brief
+    //       })
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }

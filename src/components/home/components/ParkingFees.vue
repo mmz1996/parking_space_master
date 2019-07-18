@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { record } from '../../../api/api'
+// import { record } from '../../../api/api'
 export default {
   name: 'ParkingFees',
   data () {
@@ -58,19 +58,19 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          record({
-            name: this.name,
-            date1: this.date1
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
+    // submitForm (formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       record({
+    //         name: this.name,
+    //         date1: this.date1
+    //       })
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }

@@ -64,6 +64,7 @@ export default {
           }).then((response) => {
             // this.$router.push('/home')
             let token = response.data.token
+            console.log(token)
             // console.log(response)
             // console.log(this.$store.state.token)
             this.$store.commit('set_token', token)

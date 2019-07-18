@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { administrator } from '../../../api/api'
+// import { administrator } from '../../../api/api'
 export default {
   name: 'AdministratorModification',
   data () {
@@ -44,20 +44,20 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          administrator({
-            administrator_name: this.administrator_name,
-            administrator_tell: this.administrator_tell,
-            administrator_id: this.administrator_id
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
+    // submitForm (formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       administrator({
+    //         administrator_name: this.administrator_name,
+    //         administrator_tell: this.administrator_tell,
+    //         administrator_id: this.administrator_id
+    //       })
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }
