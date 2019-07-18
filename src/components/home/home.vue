@@ -79,6 +79,14 @@
                 <i class="el-icon-download"></i>
                 <span>停车场离开车辆上传</span>
               </el-menu-item>
+              <el-menu-item index="ParkingspaceManagementnow">
+                <i class="el-icon-s-help"></i>
+                <span>停车场当前车位管理</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceManagementall">
+                <i class="el-icon-help"></i>
+                <span>停车场全部车位管理</span>
+              </el-menu-item>
               <el-menu-item index="AdministratorModification">
                 <i class="el-icon-upload"></i>
                 <span>管理员信息修改</span>

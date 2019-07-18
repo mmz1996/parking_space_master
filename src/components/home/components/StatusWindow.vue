@@ -2,14 +2,13 @@
   <div class="from-warpper">
     <div class="title">停车场信息展示</div>
     <div class="main">
-      <p class="tag">停车场的名称 {{name}}</p>
-      <p class="tag">停车场的编号 {{id}}</p>
-      <p class="tag">停车场的地址 {{address}}</p>
-      <p class="tag">停车场的总车位数量 {{space_num}}</p>
-      <p class="tag">停车场的可使用车位数量 {{use_num}}</p>
-      <p class="tag">停车场的简介{{desc}}</p>
-      <p class="tag">停车场的收费标准 {{charging_standard}}</p>
-      <p>{{token}}</p>
+      <p class="tag">停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{name}}</p>
+      <p class="tag">停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{id}}</p>
+      <p class="tag">停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{address}}</p>
+      <p class="tag">停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{space_num}}</p>
+      <p class="tag">停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{use_num}}</p>
+      <p class="tag">停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{desc}}</p>
+      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{charging_standard}}</p>
     </div>
   </div>
 </template>
@@ -20,14 +19,13 @@ export default {
   name: 'status',
   data () {
     return {
-      id: '123123',
-      name: '123213',
-      address: '123',
-      desc: '213',
-      space_num: '213',
-      use_num: '213',
-      charging_standard: '',
-      token: this.$store.state.token
+      id: '001',
+      name: '吉大停车场',
+      address: '吉林省长春市朝阳区前进大街2699号',
+      desc: '公共停车场',
+      space_num: '8',
+      use_num: '1',
+      charging_standard: '暂无'
     }
   },
   mounted: function () {
@@ -42,7 +40,7 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    width 600px
+    width 650px
     padding 20px
     border-radius 10px
     .title

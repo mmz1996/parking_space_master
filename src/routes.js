@@ -53,6 +53,16 @@ let routes = [
       path: 'AdministratorModification',
       component: require('@/components/home/components/AdministratorModification/').default,
       name: 'AdministratorModification'
+    },
+    {
+      path: 'ParkingspaceManagementnow',
+      component: require('@/components/home/components/ParkingspaceManagementnow/').default,
+      name: 'ParkingspaceManagementnow'
+    },
+    {
+      path: 'ParkingspaceManagementall',
+      component: require('@/components/home/components/ParkingspaceManagementall/').default,
+      name: 'ParkingspaceManagementall'
     }
     ]
   }

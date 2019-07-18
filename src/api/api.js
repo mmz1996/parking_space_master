@@ -1,6 +1,6 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'https://api.ohaiyo.vip'
-axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('Authorization')
+// axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('Authorization')
 // 登录
 export const login = params => {
   return axios.post(`/login/`, params)
