@@ -8,7 +8,7 @@
       <p class="tag">停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{space_num}}</p>
       <p class="tag">停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{use_num}}</p>
       <p class="tag">停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{desc}}</p>
-      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{charging_standard}}</p>
+      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{charging_standard}}</p>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
       desc: '公共停车场',
       space_num: '8',
       use_num: '1',
-      charging_standard: '暂无'
+      charging_standard: '前半小时内不收费，在三个小时内，一小时10元，超过三小时，一小时15元'
     }
   },
   mounted: function () {

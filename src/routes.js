@@ -63,6 +63,16 @@ let routes = [
       path: 'ParkingspaceManagementall',
       component: require('@/components/home/components/ParkingspaceManagementall/').default,
       name: 'ParkingspaceManagementall'
+    },
+    {
+      path: 'ParkingspaceStatus',
+      component: require('@/components/home/components/ParkingspaceStatus/').default,
+      name: 'ParkingspaceStatus'
+    },
+    {
+      path: 'ParkingImg',
+      component: require('@/components/home/components/ParkingImg/').default,
+      name: 'ParkingImg'
     }
     ]
   }

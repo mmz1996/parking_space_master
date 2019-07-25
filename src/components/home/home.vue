@@ -1,55 +1,8 @@
 <template>
     <div>
-      <!--<el-row class="container">-->
-        <!--<el-col :span="24" class="header">-->
-          <!--<el-col  class="logo">-->
-            <!--JLU_PISP停车场管理系统-->
-          <!--</el-col>-->
-        <!--</el-col>-->
-        <!--<el-col :span="24" class="main">-->
-          <!--<aside>-->
-            <!--<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: #E4E7ED">-->
-              <!--<el-menu-item index="status">-->
-                <!--<i class="el-icon-view"></i>-->
-                <!--<span>停车场的总信息展示</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="ParkingspaceModification">-->
-                <!--<i class="el-icon-edit"></i>-->
-                <!--<span>车位管理</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="InformationModification">-->
-                <!--<i class="el-icon-search"></i>-->
-                <!--<span>信息管理</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="ParkinginrecordModification">-->
-                <!--<i class="el-icon-upload2"></i>-->
-                <!--<span>停车场进入车辆上传</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="ParkingoutrecordModification">-->
-              <!--<i class="el-icon-download"></i>-->
-              <!--<span>停车场离开车辆上传</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="AdministratorModification">-->
-                <!--<i class="el-icon-upload"></i>-->
-                <!--<span>管理员信息修改</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item index="ParkingFees">-->
-                <!--<i class="el-icon-info"></i>-->
-                <!--<span>停车场收费规则</span>-->
-              <!--</el-menu-item>-->
-              <!--<el-menu-item @click="goback">-->
-                <!--<i class="el-icon-close"></i>-->
-                <!--<span>退出</span>-->
-              <!--</el-menu-item>-->
-            <!--</el-menu>-->
-          <!--</aside>-->
-          <!--<section class="content-container">-->
-              <!--<el-col :span="24" class="content-wrapper">-->
-                  <!--<router-view></router-view>-->
-              <!--</el-col>-->
-          <!--</section>-->
-        <!--</el-col>-->
-      <!--</el-row>-->
+      <div class="imgtitle">
+        <img :src='this.$store.state.titleimg'  alt="此处为标头信息" class="imgtitleword">
+      </div>
       <el-container>
         <el-header>
           <div class="title">
@@ -61,7 +14,7 @@
             <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: white">
               <el-menu-item index="status">
                 <i class="el-icon-view"></i>
-                <span>停车场的总信息展示</span>
+                <span>总信息展示</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceModification">
                 <i class="el-icon-edit"></i>
@@ -73,19 +26,19 @@
               </el-menu-item>
               <el-menu-item index="ParkinginrecordModification">
                 <i class="el-icon-upload2"></i>
-                <span>停车场进入车辆上传</span>
+                <span>进入车辆更新</span>
               </el-menu-item>
               <el-menu-item index="ParkingoutrecordModification">
                 <i class="el-icon-download"></i>
-                <span>停车场离开车辆上传</span>
+                <span>离开车辆更新</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceManagementnow">
                 <i class="el-icon-s-help"></i>
-                <span>停车场当前车位管理</span>
+                <span>当前车位信息管理</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceManagementall">
                 <i class="el-icon-help"></i>
-                <span>停车场全部车位管理</span>
+                <span>全部车位信息管理</span>
               </el-menu-item>
               <el-menu-item index="AdministratorModification">
                 <i class="el-icon-upload"></i>
@@ -93,7 +46,15 @@
               </el-menu-item>
               <el-menu-item index="ParkingFees">
                 <i class="el-icon-info"></i>
-                <span>停车场收费规则</span>
+                <span>详细收费规则</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceStatus">
+                <i class="el-icon-s-promotion"></i>
+                <span>车位状态管理</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingImg">
+                <i class="el-icon-picture"></i>
+                <span>车位状态管理</span>
               </el-menu-item>
               <el-menu-item @click="goback">
                 <i class="el-icon-close"></i>
@@ -139,6 +100,10 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+  .imgtitle
+    height 100px
+    .imgtitleword
+      text-align center
   .el-header
     height 60px
     line-height 60px
