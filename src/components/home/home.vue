@@ -54,7 +54,11 @@
               </el-menu-item>
               <el-menu-item index="ParkingImg">
                 <i class="el-icon-picture"></i>
-                <span>车位状态管理</span>
+                <span>标头图片修改</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceImage">
+                <i class="el-icon-magic-stick"></i>
+                <span>停车场车位实况</span>
               </el-menu-item>
               <el-menu-item @click="goback">
                 <i class="el-icon-close"></i>

@@ -4,7 +4,6 @@
     <el-upload
       class="upload-demo"
       ref="upload"
-      action="https://jsonplaceholder.typicode.com/posts/"
       :on-preview="handlePreview"
       :on-remove="handleRemove"
       :file-list="fileList"
@@ -22,7 +21,7 @@ export default {
   name: 'ParkingImg',
   data () {
     return {
-      fileList: [{name: 'titleimg.jpeg', url: 'https://www.baidu.com/link?url=Ssos_6Pv_p-YCSqqlS-w3k_EGNZCrOH5i8-qKbtEPDQbyPfwd8abhQbse9hpFaFX3ZiuyUziLBo2P-BCPjr8uDyTqP-7GSWX6s26Fy9VYYxm1L20aAfdFngydPyyhClywabYy2lEBoDU1ix1T5FLCiZCcuhjnsq8DB44xiRIbco7HceiLoPEJC6fgARSplnw2HWx1z7-XO2RhIaK1OFjXZMJHxchAddq2kAlHiI9967doo6UrPNu2u9kYHdDDCaFd0hJ2gHVa-13lJpf-rKli0IgcaTrdCIGAmtq2m5gnpqFtlPTU09j7nAMbpvQPukZTuL8XZ8q_tdSC2E_kybiYvkBn1GJYJJLbvgvTAf-6MWVjOm6zj7IFG3xcmrsPLUCcMXDlRhkM9Bxtvbb0TPJQOrSxre4ebi3UxruU6MnrzYbSR00eAI3QpZMaIOS7wyRRYzKceXBp1VLdWfbSkZU0WyYci4tC05OfKZvKkQJnp0CdjsVxnLLpPmpw_EW-F86u4LOTWxZuPqZ9jdKN4W5Lidj4LmJIuO5bLw-5T50_CpGSSvGxouESs97IDnyhFaALgZks3SzMIQlXDfniMjbga&timg=&click_t=1564041565038&s_info=1519_731&wd=&eqid=c41dbbda00037519000000035d395e89'}]
+      fileList: [{name: 'titleimg.jpeg', url: this.$store.state.titleimg}]
     }
   },
   methods: {
