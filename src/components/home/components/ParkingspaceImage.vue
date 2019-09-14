@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="from-warpper">
+      <div class="title">计算机大楼东区停车场车位实况</div>
       <canvas id="myCanvas1" width="1200" height="1200"
-              style="border:1px solid #000000;">
+              style="border:3px solid #000000;">
       </canvas>
     </div>
 </template>
@@ -97,6 +98,18 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang='stylus' scoped>
+  .from-warpper
+    width 600px
+    padding 20px
+    margin-top 30px
+    border-radius 10px
+    background-color rgba(255, 255, 255, 0.5)
+    .title
+      height 30px
+      line-height 30px
+      font-size 25px
+      margin-bottom 30px
+    .button
+      text-align center
 </style>

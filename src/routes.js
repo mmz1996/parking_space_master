@@ -78,6 +78,11 @@ let routes = [
       path: 'ParkingspaceImage',
       component: require('@/components/home/components/ParkingspaceImage/').default,
       name: 'ParkingspaceImage'
+    },
+    {
+      path: 'ParkingspaceImagewest',
+      component: require('@/components/home/components/ParkingspaceImagewest/').default,
+      name: 'ParkingspaceImagewest'
     }
     ]
   }

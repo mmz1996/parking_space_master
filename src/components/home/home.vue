@@ -58,7 +58,11 @@
               </el-menu-item>
               <el-menu-item index="ParkingspaceImage">
                 <i class="el-icon-magic-stick"></i>
-                <span>停车场车位实况</span>
+                <span>计算机大楼东区停车场车位实况</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceImagewest">
+                <i class="el-icon-magic-stick"></i>
+                <span>计算机大楼西区停车场车位实况</span>
               </el-menu-item>
               <el-menu-item @click="goback">
                 <i class="el-icon-close"></i>
