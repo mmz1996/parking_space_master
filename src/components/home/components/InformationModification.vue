@@ -3,9 +3,6 @@
     <div class="from-warpper">
       <div class="title">停车场信息修改</div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
-        <el-form-item label="收费标准" prop="charging_standard">
-          <el-input v-model="ruleForm.charging_standard" autosize type="textarea"></el-input>
-        </el-form-item>
         <el-form-item label="停车场简介" prop="business_brief">
           <el-input v-model="ruleForm.business_brief" autosize type="textarea"></el-input>
         </el-form-item>
@@ -31,7 +28,7 @@
 </template>
 
 <script>
-// import { message } from '../../../api/api'
+import axios from 'axios'
 export default {
   name: 'InformationModification',
   data  () {
@@ -41,7 +38,6 @@ export default {
         name: '',
         latitude: '',
         longitude: '',
-        charging_standard: '',
         business_brief: ''
       },
       rules: {
@@ -50,9 +46,6 @@ export default {
         ],
         name: [
           { required: true, message: '请输入停车场名称', trigger: 'blur' }
-        ],
-        charging_standard: [
-          { required: true, message: '请输入停车场收费标准', trigger: 'blur' }
         ],
         business_brief: [
           { required: true, message: '请输入停车场简介', trigger: 'blur' }
@@ -67,23 +60,20 @@ export default {
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       message({
-    //         address: this.address,
-    //         name: this.name,
-    //         latitude: this.latitude,
-    //         longitude: this.longitude,
-    //         charging_standard: this.charging_standard,
-    //         business_brief: this.business_brief
-    //       })
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // },
+    submitForm (formName) {
+      axios.patch('/parkinglot/{' + this.ruleForm.space_num + '}/', {
+        name: this.ruleForm.name,
+        address: this.ruleForm.address,
+        longitude: this.ruleForm.longitude,
+        latitude: this.ruleForm.latitude,
+        business_brief: this.ruleForm.business_brief,
+        id: this.$store.id
+      }).then(function (response) {
+        console.log(response)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }

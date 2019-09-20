@@ -1,26 +1,27 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'https://api.ohaiyo.vip'
-axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('Authorization')
+axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token')
 // 登录
 export const login = params => {
   return axios.post(`/login/`, params)
 }
-// export const login = params => {
-//   return axios({
-//     url: '/login/',
-//     data: params,
-//     method: 'post'
-//     // headers: {'Authorization': 'JWT ' + this.$store.state.token}
-//   })
-// }
-// 车位数量更新
+// 登录
+
 export const space = params => {
-  return axios.post(`/space/`, params)
+  return axios.get(`/parkinglot/`)
 }
-// 停车场信息更新
-export const information = params => {
-  return axios.post(`/information/`, params)
+// 停车场信息获取
+
+export const getprice = params => {
+  return axios.get(`/price/`)
 }
+// 停车场收费信息获取
+
+export const carportstatus = params => {
+  return axios.post(`/carportstatus/`, params)
+}
+// 停车场车位信息修改
+
 // 停车场管理员信息更新
 export const administrator = params => {
   return axios.post(`/administrator/`, params)

@@ -4,8 +4,9 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    token: '123',
-    titleimg: require('@/assets/titleimg.png')
+    token: '',
+    titleimg: require('@/assets/titleimg.png'),
+    id: ''
   },
   mutations: {
     set_token (state, token) {
@@ -15,6 +16,10 @@ const store = new Vuex.Store({
     del_token (state) {
       state.token = ''
       localStorage.removeItem('token')
+    },
+    set_id (state, id) {
+      state.id = id
+      localStorage.id = id
     }
   }
 })

@@ -2,20 +2,18 @@
   <div class="from-warpper">
     <div class="title">停车场车位修改</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm" label-position="left">
-      <el-form-item label="总车位数目" prop="space_num">
-        <el-input v-model="ruleForm.space_num"></el-input>
+      <el-form-item label="车位的id值" prop="space_num" >
+        <el-input v-model="ruleForm.space_num" placeholder="请输入要修改车位的id值"></el-input>
       </el-form-item>
-      <el-form-item label="无法使用车位数量" prop="broken_num">
-        <el-input v-model="ruleForm.broken_num"></el-input>
-      </el-form-item>
-      <el-form-item label="当前可以使用车位数量" prop="use_num">
-        <el-input v-model="ruleForm.use_num"></el-input>
-      </el-form-item>
-      <el-form-item label="车位实时更新日志" prop="broken_new">
-        <el-input type="textarea" v-model="ruleForm.broken_new" autosize></el-input>
+      <el-form-item label="车位状态选择">
+        <el-select v-model="ruleForm.status" placeholder="请选择车位状态">
+          <el-option label="预定" value="reserved"></el-option>
+          <el-option label="空闲" value="unoccupied"></el-option>
+          <el-option label="占用" value="engaged"></el-option>
+        </el-select>
       </el-form-item>
       <div class="button">
-        <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
+        <el-button type="primary" @click="submitForm()">上传提交</el-button>
         <el-button @click="resetForm('ruleForm')">全部重置</el-button>
       </div>
     </el-form>
@@ -23,7 +21,6 @@
 </template>
 
 <script>
-// import { number } from '../../../api/api'
 import axios from 'axios'
 export default {
   name: 'ParkingspaceModification',
@@ -31,57 +28,37 @@ export default {
     return {
       ruleForm: {
         space_num: '',
-        broken_num: '',
-        broken_new: '',
-        use_num: ''
+        status: ''
       },
       rules: {
         space_num: [
           { required: true, message: '请输入停车场车位总数量', trigger: 'blur' }
-        ],
-        broken_num: [
-          { required: true, message: '请填写停车场无法使用车位数量', trigger: 'blur' }
-        ],
-        broken_new: [
-          { required: true, message: '请填写停车场车位更新日志', trigger: 'blur' }
-        ],
-        use_num: [
-          { required: true, message: '请填写停车场可使用车位数量', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       number({
-    //         space_num: this.ruleForm.space_num,
-    //         broken_num: this.ruleForm.broken_num,
-    //         broken_new: this.ruleForm.broken_new,
-    //         use_num: this.ruleForm.use_num
-    //       })
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // },
+    submitForm (formName) {
+      let url = '/carport/' + this.ruleForm.space_num + '/'
+      console.log(this.ruleForm.space_num)
+      console.log(this.ruleForm.status)
+      console.log(this.$store.id)
+      axios.patch(url, {
+        id: this.ruleForm.space_num,
+        status: this.ruleForm.status,
+        parkinglot: this.$store.id
+      }).then(function (response) {
+        console.log(response)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     resetForm (formName) {
       this.$refs[formName].resetFields()
-    },
-    getHomeInfo () {
-      axios.get('/static/json/BaseCity.json')
-        .then(this.getHomeInfoSucc)
-    },
-    getHomeInfoSucc (res) {
-      // console.log(res.data)
-      this.city = res.data
-      console.log(this.city[0])
+      this.ruleForm.status = ''
     }
   },
   mounted () {
-    this.getHomeInfo()
   }
 }
 </script>

@@ -64,6 +64,10 @@
                 <i class="el-icon-magic-stick"></i>
                 <span>计算机大楼西区停车场车位实况</span>
               </el-menu-item>
+              <el-menu-item index="ParkingspaceEcharts">
+                <i class="el-icon-magic-stick"></i>
+                <span>停车场车位柱状图</span>
+              </el-menu-item>
               <el-menu-item @click="goback">
                 <i class="el-icon-close"></i>
                 <span>退出</span>

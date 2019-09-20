@@ -68,6 +68,7 @@ export default {
             // console.log(response)
             // console.log(this.$store.state.token)
             this.$store.commit('set_token', token)
+            localStorage.setItem('token', token)
             // let { code } = data
             // if (code !== 200) {
             //   this.$message({
@@ -81,7 +82,7 @@ export default {
               type: 'success',
               showClose: true
             })
-            this.$router.push('/home')
+            this.$router.push('/home/status')
             // if (this.$store.state.token) {
             //   this.$router.push('/home')
             //   console.log(this.$store.state.token)

@@ -2,39 +2,48 @@
   <div class="from-warpper">
     <div class="title">停车场信息展示</div>
     <div class="main">
-      <p class="tag">停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{name}}</p>
-      <p class="tag">停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{id}}</p>
-      <p class="tag">停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{address}}</p>
-      <p class="tag">停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{space_num}}</p>
-      <p class="tag">停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{use_num}}</p>
-      <p class="tag">停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{desc}}</p>
-      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{charging_standard}}</p>
+      <p class="tag">停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{infomation.name}}</p>
+      <p class="tag">停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.id}}</p>
+      <p class="tag">停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.address}}</p>
+      <p class="tag">停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.sun_num}}</p>
+      <p class="tag">停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.space_num}}</p>
+      <p class="tag">停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.desc}}</p>
+      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在{{priceinfomation.free_time}}小时内停车免费</p>
+      <p class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.free_time}}小时，停车价格为{{priceinfomation.unit_price}}块每小时</p>
+      <p class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.limit_time}}小时，停车价格为{{priceinfomation.overtime_price}}块每小时</p>
     </div>
   </div>
 </template>
 
 <script>
-import { window } from '../../../api/api'
+import { space, getprice } from '../../../api/api'
 export default {
   name: 'status',
   data () {
     return {
-      id: '001',
-      name: '吉大停车场',
-      address: '吉林省长春市朝阳区前进大街2699号',
-      desc: '公共停车场',
-      space_num: '8',
-      use_num: '1',
-      charging_standard: '前半小时内不收费，在三个小时内，一小时10元，超过三小时，一小时15元'
+      infomation: '',
+      priceinfomation: ''
+    }
+  },
+  methods: {
+    getinfomation () {
+      space().then((response) => {
+        console.log(response.data.results[0])
+        this.infomation = response.data.results[0]
+      })
+    },
+    getpriceinfomation () {
+      getprice().then((response) => {
+        console.log(response.data.results[0])
+        this.priceinfomation = response.data.results[0]
+        console.log(this.priceinfomation, '收费信息')
+      })
     }
   },
   mounted: function () {
-    window().then((res) => {
-      res = res.data.results
-      console.log(res)
-    })
+    this.getinfomation()
+    this.getpriceinfomation()
   }
-
 }
 </script>
 

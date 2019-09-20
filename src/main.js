@@ -9,12 +9,14 @@ import axios from 'axios'
 import routes from './routes'
 import Vuex from 'vuex'
 import store from './store/index.js'
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.http = Vue.prototype.$http = axios
+Vue.prototype.$echarts = echarts
 
 const router = new VueRouter({
   routes
