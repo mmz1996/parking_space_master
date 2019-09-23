@@ -1,6 +1,6 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场进入车辆上传</div>
+    <div class="title">停车场离开车辆上传</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm" label-position="left">
       <el-form-item label="车牌号码">
         <el-input v-model="ruleForm.car_number"></el-input>
@@ -19,39 +19,56 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'ParkingioutrecordModification.vue',
   data () {
     return {
       ruleForm: {
-        car_number: '',
-        out_time: ''
+        car_number: ''
       },
       rules: {
         car_number: [
           { required: true, message: '请输入进入的车牌号码', trigger: 'blur' }
-        ],
-        out_time: [
-          { required: true, message: '请记录离开的时间', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       administrator({
-    //         administrator_name: this.administrator_name,
-    //         administrator_tell: this.administrator_tell,
-    //         administrator_id: this.administrator_id
-    //       })
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // }
+    formatDate (date) {
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      m = m < 10 ? ('0' + m) : m
+      var d = date.getDate()
+      d = d < 10 ? ('0' + d) : d
+      var h = date.getHours()
+      var minute = date.getMinutes()
+      minute = minute < 10 ? ('0' + minute) : minute
+      var second = date.getSeconds()
+      second = second < 10 ? ('0' + second) : second
+      return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second
+    },
+    submitForm (formName) {
+      let date = new Date()
+      let time = this.formatDate(date)
+      let url = '/outrecord/'
+      console.log(time)
+      console.log(url)
+      var that = this
+      axios({
+        method: 'post',
+        url: url,
+        data: {
+          car: that.ruleForm.car_number,
+          parkinglot: that.$store.state.id,
+          out_time: time
+        }
+      }).then(function (response) {
+        console.log(response)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
   }
 }
 </script>

@@ -8,6 +8,17 @@
 <script>
 export default {
   name: 'ParkingspaceEcharts',
+  data () {
+    return {
+      echartsData: {
+        arr: [ 81, 101, 50, 67, 77, 80 ],
+        arrMonth: ['小型车', '中型车', '大型车', '货车', '特种车', '贵宾车'],
+        realValue: [8, 15, 100, 23, 56, 78],
+        index: 0,
+        legendData: ['空余车位', '已使用车位']
+      }
+    }
+  },
   methods: {
     drawChart () {
       let myChart = this.$echarts.init(document.getElementById('echarts'))

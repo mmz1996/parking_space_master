@@ -30,6 +30,8 @@ export default {
       space().then((response) => {
         console.log(response.data.results[0])
         this.infomation = response.data.results[0]
+        this.$store.commit('set_id', this.infomation.id)
+        console.log(this.$store.state.id)
       })
     },
     getpriceinfomation () {

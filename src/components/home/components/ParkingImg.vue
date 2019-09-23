@@ -1,43 +1,64 @@
 <template>
   <div class="from-warpper">
     <div class="title">停车场标头图片更新</div>
-    <el-upload
-      class="upload-demo"
-      ref="upload"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
-      :file-list="fileList"
-      :auto-upload="false"
-      list-type="picture">
-      <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-      <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb 且规格为1920*100</div>
-    </el-upload>
+    <input type="file"
+           accept="image/*"
+           @change="chooseImg" />
+    <canvas ref="imgPreview"
+            height="0"
+            width="0"></canvas>
+    <button @click="uploadImg">提交图片</button>
+    <img :src="imgUrlFromServer">
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'ParkingImg',
   data () {
     return {
-      fileList: [{name: 'titleimg.jpeg', url: this.$store.state.titleimg}]
+      imgUrlFromServer: '#',
+      base64: ''
     }
   },
   methods: {
-    submitUpload () {
-      this.$refs.upload.submit()
-      this.$message({
-        message: '上传成功',
-        type: 'success',
-        showClose: true
+    chooseImg (event) {
+      let file = event.target.files[0]
+      let reader = new FileReader()
+      let img = new Image()
+      // 读取图片
+      reader.readAsDataURL(file)
+      // 读取完毕后的操作
+      reader.onloadend = (e) => {
+        img.src = e.target.result
+        // 这里的e.target就是reader
+        // console.log(reader.result)
+        // reader.result就是图片的base64字符串
+        this.base64 = reader.result
+      }
+      // 预览图片
+      let canvas = this.$refs['imgPreview']
+      let context = canvas.getContext('2d')
+      img.onload = () => {
+        img.width = 100
+        img.height = 100
+        // 设置canvas大小
+        canvas.width = 100
+        canvas.height = 100
+        // 清空canvas
+        context.clearRect(0, 0, 100, 100)
+        // 画图
+        context.drawImage(img, 0, 0, 100, 100)
+      }
+    },
+    uploadImg () {
+      axios.post('https://api.ohaiyo.vip/userImage/', {
+        img: this.base64
+      }).then(response => {
+        console.log('成功')
+        console.log(response)
       })
-    },
-    handleRemove (file, fileList) {
-      console.log(file, fileList)
-    },
-    handlePreview (file) {
-      console.log(file)
     }
   }
 }

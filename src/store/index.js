@@ -6,7 +6,7 @@ const store = new Vuex.Store({
   state: {
     token: '',
     titleimg: require('@/assets/titleimg.png'),
-    id: ''
+    id: '001'
   },
   mutations: {
     set_token (state, token) {

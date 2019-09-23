@@ -48,10 +48,10 @@
                 <i class="el-icon-info"></i>
                 <span>详细收费规则</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceStatus">
-                <i class="el-icon-s-promotion"></i>
-                <span>车位状态管理</span>
-              </el-menu-item>
+              <!--<el-menu-item index="ParkingspaceStatus">-->
+                <!--<i class="el-icon-s-promotion"></i>-->
+                <!--<span>车位状态管理</span>-->
+              <!--</el-menu-item>-->
               <el-menu-item index="ParkingImg">
                 <i class="el-icon-picture"></i>
                 <span>标头图片修改</span>

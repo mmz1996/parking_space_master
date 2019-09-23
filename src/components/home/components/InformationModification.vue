@@ -61,13 +61,23 @@ export default {
   },
   methods: {
     submitForm (formName) {
-      axios.patch('/parkinglot/{' + this.ruleForm.space_num + '}/', {
-        name: this.ruleForm.name,
-        address: this.ruleForm.address,
-        longitude: this.ruleForm.longitude,
-        latitude: this.ruleForm.latitude,
-        business_brief: this.ruleForm.business_brief,
-        id: this.$store.id
+      let url = '/parkinglot/' + this.$store.state.id + '/'
+      console.log(this.ruleForm.space_num)
+      console.log(this.ruleForm.status)
+      console.log(this.$store.state.id)
+      console.log(url)
+      var that = this
+      axios({
+        method: 'patch',
+        url: url,
+        data: {
+          name: that.ruleForm.name,
+          address: that.ruleForm.address,
+          longitude: that.ruleForm.longitude,
+          latitude: that.ruleForm.latitude,
+          business_brief: that.ruleForm.business_brief,
+          id: that.$store.state.id
+        }
       }).then(function (response) {
         console.log(response)
       }).catch(function (error) {

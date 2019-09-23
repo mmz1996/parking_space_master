@@ -42,11 +42,17 @@ export default {
       let url = '/carport/' + this.ruleForm.space_num + '/'
       console.log(this.ruleForm.space_num)
       console.log(this.ruleForm.status)
-      console.log(this.$store.id)
-      axios.patch(url, {
-        id: this.ruleForm.space_num,
-        status: this.ruleForm.status,
-        parkinglot: this.$store.id
+      console.log(this.$store.state.id)
+      console.log(url)
+      var that = this
+      axios({
+        method: 'patch',
+        url: url,
+        data: {
+          id: that.ruleForm.space_num,
+          status: that.ruleForm.status,
+          parkinglot: that.$store.state.id
+        }
       }).then(function (response) {
         console.log(response)
       }).catch(function (error) {

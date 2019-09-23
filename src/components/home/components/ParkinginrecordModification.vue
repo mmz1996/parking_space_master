@@ -19,48 +19,60 @@
 </template>
 
 <script>
-// import { record } from '../../../api/api'
+import axios from 'axios'
 export default {
   name: 'ParkinginrecordModification',
   data () {
     return {
       ruleForm: {
-        car_number: '',
-        in_time: ''
+        car_number: ''
         // out_time: ''
       },
       rules: {
         car_number: [
           { required: true, message: '请输入进入的车牌号码', trigger: 'blur' }
-        ],
-        in_time: [
-          { required: true, message: '请记录进入的时间', trigger: 'blur' }
-        ],
-        out_time: [
-          { required: true, message: '请记录离开的时间', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       this.in_time = new Date()
-    //       // record({
-    //       //   name: this.name,
-    //       //   in_time: new Date()
-    //       // })
-    //       console.log(this.in_time)
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // },
-    resetForm (formName) {
-      this.$refs[formName].resetFields()
+    formatDate (date) {
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      m = m < 10 ? ('0' + m) : m
+      var d = date.getDate()
+      d = d < 10 ? ('0' + d) : d
+      var h = date.getHours()
+      var minute = date.getMinutes()
+      minute = minute < 10 ? ('0' + minute) : minute
+      var second = date.getSeconds()
+      second = second < 10 ? ('0' + second) : second
+      return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second
+    },
+    submitForm (formName) {
+      let date = new Date()
+      let time = this.formatDate(date)
+      let url = '/inrecord/'
+      console.log(time)
+      console.log(url)
+      var that = this
+      axios({
+        method: 'post',
+        url: url,
+        data: {
+          car: that.ruleForm.car_number,
+          parkinglot: that.$store.state.id,
+          in_time: time
+        }
+      }).then(function (response) {
+        console.log(response)
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
+  },
+  resetForm (formName) {
+    this.$refs[formName].resetFields()
   }
 }
 </script>
