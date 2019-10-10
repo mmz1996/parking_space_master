@@ -31,14 +31,14 @@ export default {
         console.log(response.data.results[0])
         this.infomation = response.data.results[0]
         this.$store.commit('set_id', this.infomation.id)
-        console.log(this.$store.state.id)
+        console.log('获取停车场信息成功')
       })
     },
     getpriceinfomation () {
       getprice().then((response) => {
         console.log(response.data.results[0])
         this.priceinfomation = response.data.results[0]
-        console.log(this.priceinfomation, '收费信息')
+        console.log('获取收费标准接口成功')
       })
     }
   },

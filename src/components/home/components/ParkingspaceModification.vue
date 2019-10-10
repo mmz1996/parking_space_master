@@ -1,6 +1,6 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场车位修改</div>
+    <div class="title">停车场车位管理</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm" label-position="left">
       <el-form-item label="车位的id值" prop="space_num" >
         <el-input v-model="ruleForm.space_num" placeholder="请输入要修改车位的id值"></el-input>
@@ -55,6 +55,7 @@ export default {
         }
       }).then(function (response) {
         console.log(response)
+        console.log('车位信息修改成功')
       }).catch(function (error) {
         console.log(error)
       })

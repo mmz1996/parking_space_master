@@ -49,6 +49,7 @@ export default {
       return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second
     },
     submitForm (formName) {
+      let urldelete = '/carinparking/' + this.$store.state.id + '/'
       let date = new Date()
       let time = this.formatDate(date)
       let url = '/outrecord/'

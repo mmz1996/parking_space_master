@@ -14,7 +14,7 @@
             <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @select="handleselect" router style="background-color: white">
               <el-menu-item index="status">
                 <i class="el-icon-view"></i>
-                <span>总信息展示</span>
+                <span>停车场总信息展示</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceModification">
                 <i class="el-icon-edit"></i>
@@ -26,23 +26,23 @@
               </el-menu-item>
               <el-menu-item index="ParkinginrecordModification">
                 <i class="el-icon-upload2"></i>
-                <span>进入车辆更新</span>
+                <span>进入车辆上传</span>
               </el-menu-item>
               <el-menu-item index="ParkingoutrecordModification">
                 <i class="el-icon-download"></i>
-                <span>离开车辆更新</span>
+                <span>离开车辆上传</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceManagementnow">
                 <i class="el-icon-s-help"></i>
-                <span>当前车位信息管理</span>
+                <span>停车场当前内部车辆信息</span>
               </el-menu-item>
               <el-menu-item index="ParkingspaceManagementall">
                 <i class="el-icon-help"></i>
-                <span>全部车位信息管理</span>
+                <span>停车场停车记录</span>
               </el-menu-item>
               <el-menu-item index="AdministratorModification">
                 <i class="el-icon-upload"></i>
-                <span>管理员信息修改</span>
+                <span>管理员用户信息修改</span>
               </el-menu-item>
               <el-menu-item index="ParkingFees">
                 <i class="el-icon-info"></i>

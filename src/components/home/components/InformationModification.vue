@@ -2,7 +2,7 @@
   <div>
     <div class="from-warpper">
       <div class="title">停车场信息修改</div>
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
+      <el-form :model="ruleForm"  ref="ruleForm" label-width="150px" class="demo-ruleForm" label-position="left">
         <el-form-item label="停车场简介" prop="business_brief">
           <el-input v-model="ruleForm.business_brief" autosize type="textarea"></el-input>
         </el-form-item>
@@ -39,23 +39,6 @@ export default {
         latitude: '',
         longitude: '',
         business_brief: ''
-      },
-      rules: {
-        address: [
-          { required: true, message: '请输入停车场地址', trigger: 'blur' }
-        ],
-        name: [
-          { required: true, message: '请输入停车场名称', trigger: 'blur' }
-        ],
-        business_brief: [
-          { required: true, message: '请输入停车场简介', trigger: 'blur' }
-        ],
-        longitude: [
-          { required: true, message: '请输入停车场经度', trigger: 'blur' }
-        ],
-        latitude: [
-          { required: true, message: '请输入停车场纬度', trigger: 'blur' }
-        ]
       }
     }
   },
@@ -80,6 +63,7 @@ export default {
         }
       }).then(function (response) {
         console.log(response)
+        console.log('信息修改成功')
       }).catch(function (error) {
         console.log(error)
       })

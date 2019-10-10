@@ -53,8 +53,6 @@ export default {
       let date = new Date()
       let time = this.formatDate(date)
       let url = '/inrecord/'
-      console.log(time)
-      console.log(url)
       var that = this
       axios({
         method: 'post',
@@ -66,6 +64,7 @@ export default {
         }
       }).then(function (response) {
         console.log(response)
+        console.log('上传到inrecord正常')
       }).catch(function (error) {
         console.log(error)
       })

@@ -1,11 +1,13 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场全部车位管理</div>
+    <div class="title">停车场车位记录</div>
     <div>
-      <el-table :data="tableData">
-        <el-table-column prop="car_number" label="车牌号码" width="200">
+      <el-table :data="results">
+        <el-table-column prop="car" label="车牌号码" width="200">
         </el-table-column>
-        <el-table-column prop="in_time" label="进入时间" width="200">
+        <el-table-column prop="add_time" label="进入时间" width="200">
+        </el-table-column>
+        <el-table-column prop="out_time" label="离开时间" width="200">
         </el-table-column>
       </el-table>
     </div>
@@ -13,16 +15,29 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'ParkingspaceManagementall',
   data () {
-    const item = {
-      car_number: '吉A12345',
-      in_time: '20190714 12:30:15'
-    }
     return {
-      tableData: Array(20).fill(item)
+      results: ''
     }
+  },
+  methods: {
+    getInformation () {
+      var that = this
+      axios({
+        method: 'get',
+        url: '/record/'
+      }).then(function (response) {
+        console.log(response.data.results)
+        console.log('get停车记录数据正常')
+        that.results = response.data.results
+      })
+    }
+  },
+  mounted: function () {
+    this.getInformation()
   }
 }
 </script>

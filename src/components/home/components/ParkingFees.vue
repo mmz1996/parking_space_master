@@ -2,16 +2,13 @@
   <div class="from-warpper">
     <div class="title">停车场详细收费规则</div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="500px" class="demo-ruleForm" label-position="left">
-      <el-form-item label="在若干分钟内停车不收费" prop="first_minutes" >
-        <el-input v-model="ruleForm.first_minutes"></el-input>
+      <el-form-item label="在若小时内内停车不收费" prop="first_hours" >
+        <el-input v-model="ruleForm.first_hours"></el-input>
       </el-form-item>
-      <el-form-item label="在若干小时内" prop="first_hours" >
-          <el-input v-model="ruleForm.first_hours"></el-input>
-      </el-form-item>
-      <el-form-item label="每小时停车价格为" prop="first_charge">
+      <el-form-item label="超过上述时间，每小时停车价格为" prop="first_charge">
         <el-input v-model="ruleForm.first_charge"></el-input>
       </el-form-item>
-      <el-form-item label="超过多少小时" prop="last_hours">
+      <el-form-item label="超过最大限度时间" prop="last_hours">
         <el-input v-model="ruleForm.last_hours" ></el-input>
       </el-form-item>
       <el-form-item label="每小时停车价格为" prop="last_charge">
@@ -26,22 +23,18 @@
 </template>
 
 <script>
-// import { record } from '../../../api/api'
+import axios from 'axios'
 export default {
   name: 'ParkingFees',
   data () {
     return {
       ruleForm: {
         first_hours: '',
-        first_minutes: '',
         first_charge: '',
         last_hours: '',
         last_charge: ''
       },
       rules: {
-        first_minutes: [
-          { required: true, message: '请输入时间限制', trigger: 'blur' }
-        ],
         first_hours: [
           { required: true, message: '请输入时间限制', trigger: 'blur' }
         ],
@@ -58,19 +51,25 @@ export default {
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       record({
-    //         name: this.name,
-    //         date1: this.date1
-    //       })
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // },
+    submitForm (formName) {
+      let url = '/price/' + this.$store.state.id + '/'
+      var that = this
+      axios({
+        method: 'patch',
+        url: url,
+        data: {
+          unit_price: that.ruleForm.first_charge,
+          overtime_price: that.ruleForm.last_charge,
+          limit_time: that.ruleForm.last_hours,
+          free_time: that.ruleForm.first_hours
+        }
+      }).then(function (response) {
+        console.log(response)
+        console.log('更新成功收费标准')
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }

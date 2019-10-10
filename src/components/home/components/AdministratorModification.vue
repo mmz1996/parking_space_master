@@ -8,8 +8,8 @@
       <el-form-item label="管理员联系方式" prop="administrator_tell">
         <el-input v-model="ruleForm.administrator_tell"></el-input>
       </el-form-item>
-      <el-form-item label="管理员身份证号码" prop="administrator_id">
-        <el-input v-model="ruleForm.administrator_id"></el-input>
+      <el-form-item label="管理员邮箱地址" prop="administrator_id">
+        <el-input v-model="ruleForm.administrator_email"></el-input>
       </el-form-item>
       <div class="button">
         <el-button type="primary" @click="submitForm('ruleForm')">上传提交</el-button>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import { administrator } from '../../../api/api'
+import axios from 'axios'
 export default {
   name: 'AdministratorModification',
   data () {
@@ -28,7 +28,7 @@ export default {
       ruleForm: {
         administrator_name: '',
         administrator_tell: '',
-        administrator_id: ''
+        administrator_email: ''
       },
       rules: {
         administrator_name: [
@@ -37,27 +37,32 @@ export default {
         administrator_tell: [
           { required: true, message: '请输入管理员联系方式', trigger: 'blur' }
         ],
-        administrator_id: [
-          { required: true, message: '请输入管理员身份证号码', trigger: 'blur' }
+        administrator_email: [
+          { required: true, message: '请输入管理员邮箱地址', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-    // submitForm (formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       administrator({
-    //         administrator_name: this.administrator_name,
-    //         administrator_tell: this.administrator_tell,
-    //         administrator_id: this.administrator_id
-    //       })
-    //     } else {
-    //       console.log('error submit!!')
-    //       return false
-    //     }
-    //   })
-    // },
+    submitForm (formName) {
+      let url = '/users/' + this.$store.state.id + '/'
+      var that = this
+      axios({
+        method: 'patch',
+        url: url,
+        data: {
+          name: that.ruleForm.administrator_name,
+          mobile: that.ruleForm.administrator_tell,
+          id: that.$store.state.id,
+          email: that.ruleForm.administrator_email
+        }
+      }).then(function (response) {
+        console.log(response)
+        console.log('管理员信息上传成功')
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     resetForm (formName) {
       this.$refs[formName].resetFields()
     }
