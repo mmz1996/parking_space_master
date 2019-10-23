@@ -85,6 +85,26 @@ let routes = [
       name: 'ParkingspaceImagewest'
     },
     {
+      path: 'ParkingspaceImagetang',
+      component: require('@/components/home/components/ParkingspaceImagetang/').default,
+      name: 'ParkingspaceImagetang'
+    },
+    {
+      path: 'ParkingspaceImageDingeast',
+      component: require('@/components/home/components/ParkingspaceImageDingeast/').default,
+      name: 'ParkingspaceImageDingeast'
+    },
+    {
+      path: 'ParkingspaceImageDingwest',
+      component: require('@/components/home/components/ParkingspaceImageDingwest/').default,
+      name: 'ParkingspaceImageDingwest'
+    },
+    {
+      path: 'ParkingspaceImageChao',
+      component: require('@/components/home/components/ParkingspaceImageChao/').default,
+      name: 'ParkingspaceImageChao'
+    },
+    {
       path: 'ParkingspaceEcharts',
       component: require('@/components/home/components/ParkingspaceEcharts/').default,
       name: 'ParkingspaceEcharts'

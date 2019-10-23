@@ -64,9 +64,21 @@
                 <i class="el-icon-magic-stick"></i>
                 <span>计算机大楼西区停车场车位实况</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceEcharts">
+              <el-menu-item index="ParkingspaceImagetang">
                 <i class="el-icon-magic-stick"></i>
-                <span>停车场车位柱状图</span>
+                <span>唐敖庆化学南区停车场车位实况</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceImageDingeast">
+                <i class="el-icon-magic-stick"></i>
+                <span>鼎新楼东区停车场车位实况</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceImageDingwest">
+                <i class="el-icon-magic-stick"></i>
+                <span>鼎新楼东区停车场车位实况</span>
+              </el-menu-item>
+              <el-menu-item index="ParkingspaceImageChao">
+                <i class="el-icon-magic-stick"></i>
+                <span>超分子楼北区停车场车位实况</span>
               </el-menu-item>
               <el-menu-item @click="goback">
                 <i class="el-icon-close"></i>

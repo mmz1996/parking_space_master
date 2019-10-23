@@ -1,7 +1,7 @@
 <template>
   <div class="from-warpper">
-    <div class="title">计算机大楼西区停车场车位实况</div>
-    <canvas id="myCanvas1" width="1200" height="1200"
+    <div class="title">唐敖庆化学南区停车场车位实况</div>
+    <canvas id="myCanvas1" height="1200" width="1200"
             style="border:3px solid #000000;">
     </canvas>
   </div>
@@ -9,12 +9,7 @@
 
 <script>
 export default {
-  name: 'ParkingspaceImagewest',
-  data () {
-    return {
-      status: [{id: '001', color: 0}, {id: '002', color: 1}]
-    }
-  },
+  name: 'ParkingspaceImagetang',
   mounted () {
     this.initCanvas1()
   },
@@ -47,35 +42,27 @@ export default {
       let canvas = document.getElementById('myCanvas1')
       let ctx = canvas.getContext('2d')
       ctx.fillStyle = 'black'
-      ctx.font = '30px Arial'
+      ctx.font = '25px Arial'
       ctx.fillText((j + i), x + 5, y + 25)
     },
     initCanvas1 () {
       // this.drawBackground(0, 0, 1200, 1200)
       let i
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(100, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(100, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'A')
+      for (i = 0; i <= 5; i++) {
+        this.drawPlace((100 + i * 55), 80, 60, 30, Math.floor(Math.random() * 3))
+        this.writePlace((100 + i * 55), 80, 60, 30, Math.floor(Math.random() * 3), i, 'A')
       }
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(250, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(250, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'B')
+      for (i = 0; i <= 12; i++) {
+        this.drawPlace(100, (120 + i * 30), 60, 30, Math.floor(Math.random() * 3))
+        this.writePlace(100, (120 + i * 30), 60, 30, Math.floor(Math.random() * 3), i, 'B')
       }
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(400, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(400, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'C')
+      for (i = 0; i <= 12; i++) {
+        this.drawPlace(100, (540 + i * 30), 60, 30, Math.floor(Math.random() * 3))
+        this.writePlace(100, (540 + i * 30), 60, 30, Math.floor(Math.random() * 3), i, 'C')
       }
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(740, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(740, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'D')
-      }
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(890, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(890, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'E')
-      }
-      for (i = 1; i <= 25; i++) {
-        this.drawPlace(1040, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
-        this.writePlace(1040, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'F')
+      for (i = 0; i <= 5; i++) {
+        this.drawPlace((100 + i * 55), 945, 60, 30, Math.floor(Math.random() * 3))
+        this.writePlace((100 + i * 55), 945, 60, 30, Math.floor(Math.random() * 3), i, 'D')
       }
     }
   }
@@ -84,7 +71,6 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    width 600px
     padding 20px
     margin-top 30px
     border-radius 10px

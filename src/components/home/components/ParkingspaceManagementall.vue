@@ -28,7 +28,10 @@ export default {
       var that = this
       axios({
         method: 'get',
-        url: '/record/'
+        url: '/record/',
+        params: {
+          page_size: 20
+        }
       }).then(function (response) {
         console.log(response.data.results)
         console.log('get停车记录数据正常')

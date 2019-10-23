@@ -83,6 +83,7 @@ export default {
               showClose: true
             })
             this.$router.push('/home/status')
+            console.log('登录成功')
             // if (this.$store.state.token) {
             //   this.$router.push('/home')
             //   console.log(this.$store.state.token)

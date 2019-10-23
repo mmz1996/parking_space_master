@@ -1,14 +1,23 @@
 <template>
   <div class="from-warpper">
     <div class="title">停车场标头图片更新</div>
-    <input type="file"
-           accept="image/*"
-           @change="chooseImg" />
-    <canvas ref="imgPreview"
-            height="0"
-            width="0"></canvas>
-    <button @click="uploadImg">提交图片</button>
-    <img :src="imgUrlFromServer">
+    <el-upload
+      class="upload-demo"
+      ref="upload"
+      action="http://0.0.0.0:8000/paringlotimage/"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :on-change="onChange"
+      :before-upload="beforeUpload"
+      :data="postdate"
+      :headers="header"
+      :http-request="upImage"
+      accept=".jpg,.jpeg,.png,.gif,.bmp,.pdf,.JPG,.JPEG,.PBG,.GIF,.BMP,.PDF"
+      :auto-upload="false">
+      <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+      <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
   </div>
 </template>
 
@@ -18,46 +27,50 @@ export default {
   name: 'ParkingImg',
   data () {
     return {
-      imgUrlFromServer: '#',
-      base64: ''
+      fileList: [],
+      postdate: {
+        'ParkingLot': '001'
+      },
+      header: {
+        // 'Content-Type': 'multipart/form-data',
+        'Authorization': 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjM3MjQ2MTIzOUBxcS5jb20iLCJleHAiOjE1NzE0ODI5OTMsInVzZXJuYW1lIjoiYWRtaW4iLCJ1c2VyX2lkIjoxfQ.0jMjkROeqAFcEKOMsnpkeg9xvbdoq8Q63oMWqcMxj_E'
+      }
     }
   },
   methods: {
-    chooseImg (event) {
-      let file = event.target.files[0]
-      let reader = new FileReader()
-      let img = new Image()
-      // 读取图片
-      reader.readAsDataURL(file)
-      // 读取完毕后的操作
-      reader.onloadend = (e) => {
-        img.src = e.target.result
-        // 这里的e.target就是reader
-        // console.log(reader.result)
-        // reader.result就是图片的base64字符串
-        this.base64 = reader.result
-      }
-      // 预览图片
-      let canvas = this.$refs['imgPreview']
-      let context = canvas.getContext('2d')
-      img.onload = () => {
-        img.width = 100
-        img.height = 100
-        // 设置canvas大小
-        canvas.width = 100
-        canvas.height = 100
-        // 清空canvas
-        context.clearRect(0, 0, 100, 100)
-        // 画图
-        context.drawImage(img, 0, 0, 100, 100)
-      }
+    submitUpload () {
+      this.$refs.upload.submit()
     },
-    uploadImg () {
-      axios.post('https://api.ohaiyo.vip/userImage/', {
-        img: this.base64
-      }).then(response => {
-        console.log('成功')
-        console.log(response)
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
+    },
+    beforeUpload (file) {
+      console.log(file)
+    },
+    onChange (file, fileList) {
+      console.log(file, fileList)
+    },
+    upImage (file) {
+      console.log('file', file)
+      let imagedata = file.file
+      file.image = imagedata
+      console.log(file)
+      const param = new FormData()
+      param.append('ParkingLot', '001')
+      param.append('image', file.file)
+      const config = {
+        headers: { 'Content-Type': 'multipart/form-data',
+          'Authorization': 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjM3MjQ2MTIzOUBxcS5jb20iLCJleHAiOjE1NzE0ODI5OTMsInVzZXJuYW1lIjoiYWRtaW4iLCJ1c2VyX2lkIjoxfQ.0jMjkROeqAFcEKOMsnpkeg9xvbdoq8Q63oMWqcMxj_E'}
+      }
+      axios.post('https://api.ohaiyo.vip/paringlotimage/', param, config).then(res => {
+        this.$message({
+          message: '上传成功',
+          type: 'success',
+          showClose: true
+        })
       })
     }
   }

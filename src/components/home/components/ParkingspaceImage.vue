@@ -53,43 +53,43 @@ export default {
     initCanvas1 () {
       // this.drawBackground(0, 0, 1200, 1200)
       let i
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(40, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(40, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'A')
       }
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(110, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(110, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'B')
       }
-      for (i = 0; i <= 28; i++) {
+      for (i = 1; i <= 28; i++) {
         this.drawPlace(270, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(270, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'C')
       }
-      for (i = 0; i <= 28; i++) {
+      for (i = 1; i <= 28; i++) {
         this.drawPlace(340, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(340, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'D')
       }
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(500, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(500, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'E')
       }
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(570, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(570, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'F')
       }
-      for (i = 0; i <= 28; i++) {
+      for (i = 1; i <= 28; i++) {
         this.drawPlace(730, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(730, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'G')
       }
-      for (i = 0; i <= 28; i++) {
+      for (i = 1; i <= 28; i++) {
         this.drawPlace(800, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(800, (20 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'H')
       }
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(960, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(960, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'E')
       }
-      for (i = 0; i <= 24; i++) {
+      for (i = 1; i <= 24; i++) {
         this.drawPlace(1030, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3))
         this.writePlace(1030, (80 + i * 35), 60, 30, Math.floor(Math.random() * 3), i, 'F')
       }
