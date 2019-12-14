@@ -108,7 +108,32 @@ let routes = [
       path: 'ParkingspaceEcharts',
       component: require('@/components/home/components/ParkingspaceEcharts/').default,
       name: 'ParkingspaceEcharts'
-    }
+    },
+    {
+      path: 'gfz',
+      component: require('@/components/home/components/gfz/').default,
+      name: 'gfz'
+    },
+    {
+      path: 'jsj',
+      component: require('@/components/home/components/jsj/').default,
+      name: 'jsj'
+    },
+    {
+      path: 'kym',
+      component: require('@/components/home/components/kym/').default,
+      name: 'kym'
+    },
+    {
+      path: 'dxleast',
+      component: require('@/components/home/components/dxleast/').default,
+      name: 'dxleast'
+    },
+      {
+        path: 'dxlwest',
+        component: require('@/components/home/components/dxlwest/').default,
+        name: 'dxlwest'
+      }
     ]
   }
 ]

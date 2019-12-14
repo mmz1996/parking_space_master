@@ -52,31 +52,35 @@
                 <!--<i class="el-icon-s-promotion"></i>-->
                 <!--<span>车位状态管理</span>-->
               <!--</el-menu-item>-->
-              <el-menu-item index="ParkingImg">
-                <i class="el-icon-picture"></i>
-                <span>标头图片修改</span>
-              </el-menu-item>
-              <el-menu-item index="ParkingspaceImage">
+              <!--<el-menu-item index="ParkingImg">-->
+                <!--<i class="el-icon-picture"></i>-->
+                <!--<span>标头图片修改</span>-->
+              <!--</el-menu-item>-->
+              <el-menu-item index="jsj">
                 <i class="el-icon-magic-stick"></i>
                 <span>计算机大楼东区停车场车位实况</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceImagewest">
+              <el-menu-item index="kym">
                 <i class="el-icon-magic-stick"></i>
-                <span>计算机大楼西区停车场车位实况</span>
+                <span>匡亚明大楼东区停车场车位实况</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceImagetang">
-                <i class="el-icon-magic-stick"></i>
-                <span>唐敖庆化学南区停车场车位实况</span>
-              </el-menu-item>
-              <el-menu-item index="ParkingspaceImageDingeast">
+              <!--<el-menu-item index="ParkingspaceImageDingwest">-->
+                <!--<i class="el-icon-magic-stick"></i>-->
+                <!--<span>鼎新楼西区停车场车位实况</span>-->
+              <!--</el-menu-item>-->
+              <!--<el-menu-item index="ParkingspaceImageDingeast">-->
+                <!--<i class="el-icon-magic-stick"></i>-->
+                <!--<span>鼎新楼东区停车场车位实况</span>-->
+              <!--</el-menu-item>-->
+              <el-menu-item index="dxleast">
                 <i class="el-icon-magic-stick"></i>
                 <span>鼎新楼东区停车场车位实况</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceImageDingwest">
+              <el-menu-item index="dxlwest">
                 <i class="el-icon-magic-stick"></i>
-                <span>鼎新楼东区停车场车位实况</span>
+                <span>鼎新楼西区停车场车位实况</span>
               </el-menu-item>
-              <el-menu-item index="ParkingspaceImageChao">
+              <el-menu-item index="gfz">
                 <i class="el-icon-magic-stick"></i>
                 <span>超分子楼北区停车场车位实况</span>
               </el-menu-item>
