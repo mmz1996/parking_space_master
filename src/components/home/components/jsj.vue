@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="from-warpper">
+      <div class="title">计算机大楼东区停车场停车位实况</div>
+    </div>
     <div id="map-container"></div>
     <div class="viewmode-group">
       <button id="btn3D" class="btn btn-default" @click="click2D"></button>
@@ -156,7 +159,7 @@
         if (status == "engaged")
           return '#ff0000'
         if (status == "reserved")
-          return '#FFFF00'
+          return '#00FF00'
       },
       // marquee() {
       //   var scrollWidth = $('#i-test-tip').width();
@@ -176,7 +179,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang='stylus'>
   .viewmode-group {
     position: absolute;
     right: 12px;
@@ -250,11 +253,11 @@
   }
 
   .codition-third {
-    background-color: rgb(255,255,0);
+    background-color: #00FF00;
   }
 
   .i-test-tip {
-    width: 320px;
+    width: 400px;
     height: 46px;
     line-height: 46px;
     left:1000px;
@@ -274,4 +277,15 @@
     height: 720px;
     width: 100%;
   }
+  .from-warpper
+    width 600px
+    padding 20px
+    margin-top 30px
+    border-radius 10px
+    background-color rgba(255, 255, 255, 0.5)
+    .title
+      height 30px
+      line-height 30px
+      font-size 25px
+      margin-bottom 30px
 </style>
