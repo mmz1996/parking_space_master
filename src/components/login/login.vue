@@ -1,9 +1,6 @@
 <template>
   <div id = "building">
     <div class="imgtitle">
-        <div class="titleinfo">
-          <p class="title">JLU-PISP信息管理系统</p>
-        </div>
         <userinput></userinput>
     </div>
   </div>
@@ -33,13 +30,11 @@ export default {
     margin: 0;
     padding: 0;
   }
-  .titleinfo
-    text-align center
-    /*background-color: #409EFF;*/
-    color: white
-    height 100px
-    font-size 30px
-    .title
-      line-height 200px
+  .imgtitle
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 35%;
+    top 15%
 
 </style>

@@ -2,7 +2,7 @@
   <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <div class="titletag" style="margin-bottom: 20px ">
       <img src="../../assets/logo.jpg" alt="" height="70" class="imgtitle">
-      <span class="title"><h3>JLU-PISP系统登录</h3></span>
+      <span class="title"><h3>JLU-PISP停车场管理系统</h3></span>
     </div>
     <el-form-item  prop="username">
       <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
