@@ -75,11 +75,10 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    width 600px
+    width 95%
     padding 20px
-    margin-top 30px
     border-radius 10px
-    background-color rgba(255, 255, 255, 0.5)
+    background-color white
     .title
       height 30px
       line-height 30px

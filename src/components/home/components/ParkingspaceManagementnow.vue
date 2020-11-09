@@ -44,10 +44,8 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    background-color black
-    width 600px
+    width 95%
     padding 20px
-    margin-top 30px
     border-radius 10px
     background-color white
     .title

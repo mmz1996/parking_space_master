@@ -1,6 +1,9 @@
 <template>
   <el-form :model="ruleForm" :rules="rules_login" ref="ruleForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-    <h3 class="title">JLU-PISP系统登录</h3>
+    <div class="titletag" style="margin-bottom: 20px ">
+      <img src="../../assets/logo.jpg" alt="" height="70" class="imgtitle">
+      <span class="title"><h3>JLU-PISP系统登录</h3></span>
+    </div>
     <el-form-item  prop="username">
       <el-input  v-model="ruleForm.username" placeholder="请输入用户名"></el-input>
     </el-form-item>
@@ -128,10 +131,23 @@ export default {
     background: #fff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
+    .titletag{
+    }
+    .imgtitle{
+      padding-left:0;
+      vertical-align:middle;
+      display:inline-block;
+      float: none;
+      text-align: center;
+    }
     .title {
-      margin: 0px auto 40px auto;
+      padding-left: 25px;
+      float: none;
+      display:inline-block;
+      vertical-align:middle;
       text-align: center;
       color: #505458;
+      font-size 15px;
     }
     .remember {
       margin: 0px 0px 35px 0px;

@@ -1,17 +1,49 @@
 <template>
   <div class="from-warpper">
-    <div class="title">停车场信息展示</div>
-    <div class="main">
-      <p class="tag">停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{infomation.name}}</p>
-      <p class="tag">停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.id}}</p>
-      <p class="tag">停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.address}}</p>
-      <p class="tag">停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.sun_num}}</p>
-      <p class="tag">停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.space_num}}</p>
-      <p class="tag">停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.desc}}</p>
-      <p class="tag">停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在{{priceinfomation.free_time}}小时内停车免费</p>
-      <p class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.free_time}}小时，停车价格为{{priceinfomation.unit_price}}块每小时</p>
-      <p class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.limit_time}}小时，停车价格为{{priceinfomation.overtime_price}}块每小时</p>
-    </div>
+    <el-row :gutter="20">
+<!--      <el-col :span="8">-->
+<!--        <el-card shadow="hover" class="mgb20" style="height:150px;">-->
+<!--          <div class="user-info">-->
+<!--            <div class="user-info-cont">-->
+<!--              <div class="user-info-name">{{name}}</div>-->
+<!--              <div>{{role}}</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </el-card>-->
+<!--      </el-col>-->
+      <el-col>
+        <el-card>
+          <span>停车场信息</span>
+        </el-card>
+        <el-card>
+          停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{infomation.name}}
+        </el-card>
+        <el-card>
+          停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.id}}
+        </el-card>
+        <el-card>
+          停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.address}}
+        </el-card>
+        <el-card>
+          停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.sun_num}}
+        </el-card>
+        <el-card>
+          停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.space_num}}
+        </el-card>
+        <el-card>
+          停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.desc}}
+        </el-card>
+        <el-card>
+          停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在{{priceinfomation.free_time}}小时内停车免费
+        </el-card>
+        <el-card>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.free_time}}小时，停车价格为{{priceinfomation.unit_price}}块每小时
+        </el-card>
+        <el-card>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.limit_time}}小时，停车价格为{{priceinfomation.overtime_price}}块每小时
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -21,6 +53,8 @@ export default {
   name: 'status',
   data () {
     return {
+      name:'mmz',
+      role:'管理员',
       infomation: '',
       priceinfomation: ''
     }
@@ -51,19 +85,117 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    width 650px
+    width 70%
     padding 20px
     border-radius 10px
-    .title
-      margin-top 30px
-      height 30px
-      line-height 30px
-      font-size 25px
-      text-align left
-    .main
-      font-size 20px
-      padding 0px 50px
-      .tag
-        padding 10px
+
+  .el-row {
+    margin-bottom: 20px;
+  }
+
+  .grid-content {
+    display: flex;
+    align-items: center;
+    height: 100px;
+  }
+
+  .grid-cont-right {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .grid-num {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .grid-con-icon {
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+  }
+
+  .grid-con-1 .grid-con-icon {
+    background: rgb(45, 140, 240);
+  }
+
+  .grid-con-1 .grid-num {
+    color: rgb(45, 140, 240);
+  }
+
+  .grid-con-2 .grid-con-icon {
+    background: rgb(100, 213, 114);
+  }
+
+  .grid-con-2 .grid-num {
+    color: rgb(45, 140, 240);
+  }
+
+  .grid-con-3 .grid-con-icon {
+    background: rgb(242, 94, 67);
+  }
+
+  .grid-con-3 .grid-num {
+    color: rgb(242, 94, 67);
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+  }
+
+  .user-avator {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .user-info-cont {
+    padding-left: 50px;
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .user-info-cont div:first-child {
+    font-size: 30px;
+    color: #222;
+  }
+
+  .user-info-list {
+    font-size: 14px;
+    color: #999;
+    line-height: 25px;
+  }
+
+  .user-info-list span {
+    margin-left: 70px;
+  }
+
+  .mgb20 {
+    margin-bottom: 20px;
+  }
+
+  .todo-item {
+    font-size: 14px;
+  }
+
+  .todo-item-del {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  .schart {
+    width: 100%;
+    height: 300px;
+  }
 
 </style>

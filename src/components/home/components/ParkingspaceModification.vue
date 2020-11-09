@@ -32,7 +32,7 @@ export default {
       },
       rules: {
         space_num: [
-          { required: true, message: '请输入停车场车位总数量', trigger: 'blur' }
+          { required: true, message: '请输入要修改车位的id值', trigger: 'blur' }
         ]
       }
     }
@@ -72,10 +72,8 @@ export default {
 
 <style lang='stylus' scoped>
   .from-warpper
-    background-color black
-    width 600px
+    width 95%
     padding 20px
-    margin-top 30px
     border-radius 10px
     background-color white
     .title

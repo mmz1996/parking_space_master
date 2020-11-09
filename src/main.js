@@ -3,13 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
-import './element/theme/index.css'
+
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import routes from './routes'
 import Vuex from 'vuex'
 import store from './store/index.js'
 import echarts from 'echarts'
+
+import 'element-ui/lib/theme-chalk/index.css';
+import '@/components/home/common/directives';
+import '@/assets/css/icon.css';
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

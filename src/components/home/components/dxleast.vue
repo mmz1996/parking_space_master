@@ -2,22 +2,23 @@
   <div>
     <div class="from-warpper">
       <div class="title">鼎新楼东区停车场停车位实况</div>
+      <div id="map-container"></div>
+      <div class="viewmode-group">
+        <button id="btn3D" class="btn btn-default" @click="click2D"></button>
+      </div>
+      <div class="parking fix" id="parking"><span id="carid"></span>车位情况：<span id="YorN"></span></div>
+      <div class="codition fix">
+        <ul>
+          <li><span class="codition-first"></span>占用车位</li>
+          <li><span class="codition-second"></span>空闲车位</li>
+          <li><span class="codition-third"></span>预定车位</li>
+        </ul>
+      </div>
+      <div class="i-test-tip fix" id="i-test-tip">
+        停车场总车位数量为{{alldata}}，当前剩余车位数 {{freedata}}
+      </div>
     </div>
-    <div id="map-container"></div>
-    <div class="viewmode-group">
-      <button id="btn3D" class="btn btn-default" @click="click2D"></button>
-    </div>
-    <div class="parking fix" id="parking"><span id="carid"></span>车位情况：<span id="YorN"></span></div>
-    <div class="codition fix">
-      <ul>
-        <li><span class="codition-first"></span>占用车位</li>
-        <li><span class="codition-second"></span>空闲车位</li>
-        <li><span class="codition-third"></span>预定车位</li>
-      </ul>
-    </div>
-    <div class="i-test-tip fix" id="i-test-tip">
-      停车场总车位数量为{{alldata}}，当前剩余车位数 {{freedata}}
-    </div>
+
   </div>
 </template>
 
@@ -183,23 +184,24 @@
 <style scoped lang='stylus'>
   .viewmode-group {
     position: absolute;
-    right: 12px;
+    right: 100px;
     top: 32%;
     border-radius: 6px;
     border: none;
   }
 
   .viewmode-group button {
-    display: inline-block;
+    display: inline;
     width: 38px;
     height: 38px;
     border-radius: 4px;
     border: none;
     background-image: url("/static/esmap/resource/style/wedgets/img/3D.png")
+    background-repeat: no-repeat
   }
 
   .parking {
-    width: 400px;
+    width: 320px;
     height: 46px;
     line-height: 46px;
     left: 500px;
@@ -258,7 +260,7 @@
   }
 
   .i-test-tip {
-    width: 320px;
+    width: 400px;
     height: 46px;
     line-height: 46px;
     left:1000px;
@@ -275,15 +277,14 @@
     color: #0f0;
   }
   #map-container{
-    height: 720px;
+    height: 510px;
     width: 100%;
   }
   .from-warpper
-    width 600px
+    width 95%
     padding 20px
-    margin-top 30px
     border-radius 10px
-    background-color rgba(255, 255, 255, 0.5)
+    background-color white
     .title
       height 30px
       line-height 30px
