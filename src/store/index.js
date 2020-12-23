@@ -20,6 +20,10 @@ const store = new Vuex.Store({
     set_id (state, id) {
       state.id = id
       localStorage.id = id
+    },
+    set_username (state, username) {
+      state.username = username
+      localStorage.username = username
     }
   }
 })

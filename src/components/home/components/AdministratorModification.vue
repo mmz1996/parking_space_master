@@ -59,7 +59,17 @@ export default {
       }).then(function (response) {
         console.log(response)
         console.log('管理员信息上传成功')
+        that.$message({
+          message: '上传成功,请刷新页面',
+          type: 'success',
+          showClose: true
+        })
       }).catch(function (error) {
+        that.$message({
+          message: '上传失败,请稍后再试',
+          type: 'error',
+
+        })
         console.log(error)
       })
     },

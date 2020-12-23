@@ -32,13 +32,16 @@
 
 <script>
 import bus from '@/components/home/common/bus.js'
+import axios from 'axios'
+axios.defaults.baseURL = 'https://api.ohaiyo.vip'
+axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token')
 export default {
   name: 'Header',
   data () {
     return {
       collapse: true,
       fullscreen: false,
-      username:"mmz"
+      username:''
     }
   },
   methods: {
@@ -78,9 +81,25 @@ export default {
         }
       }
       this.fullscreen = !this.fullscreen
-    }
+    },
+    getInformationOfUsername () {
+      let url = '/users/' + this.$store.state.id + '/'
+      var that = this
+      console.log(url)
+      axios({
+        method: 'get',
+        url: url,
+      }).then(function (response) {
+        that.username =  response.data.name
+        console.log('管理员信息获取到了')
+        console.log(response.data.name)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
   },
   mounted () {
+    this.getInformationOfUsername()
     if (document.body.clientWidth < 1500) {
       this.collapseChage()
     }

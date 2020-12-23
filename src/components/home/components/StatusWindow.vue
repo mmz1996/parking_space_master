@@ -13,28 +13,34 @@
 <!--      </el-col>-->
       <el-col>
         <el-card>
-          <span>停车场信息</span>
+          停车场名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{infomation.name}}
         </el-card>
         <el-card>
-          停车场的名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{infomation.name}}
+          停车场编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.id}}
         </el-card>
         <el-card>
-          停车场的编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.id}}
+          停车场创建时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.add_time}}
         </el-card>
         <el-card>
-          停车场的地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.address}}
+          停车场地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.address}}
         </el-card>
         <el-card>
-          停车场的总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.sun_num}}
+          停车场总车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.sum_num}}
         </el-card>
         <el-card>
-          停车场的可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.space_num}}
+          停车场可使用车位数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.space_num}}
         </el-card>
         <el-card>
-          停车场的简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.desc}}
+          停车场经度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.bd_longitude}}
         </el-card>
         <el-card>
-          停车场的收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在{{priceinfomation.free_time}}小时内停车免费
+          停车场纬度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.bd_latitude}}
+        </el-card>
+        <el-card>
+          停车场简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{infomation.desc}}
+        </el-card>
+        <el-card>
+          停车场收费标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在{{priceinfomation.free_time}}小时内停车免费
         </el-card>
         <el-card>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过{{priceinfomation.free_time}}小时，停车价格为{{priceinfomation.unit_price}}块每小时
@@ -54,7 +60,6 @@ export default {
   data () {
     return {
       name:'mmz',
-      role:'管理员',
       infomation: '',
       priceinfomation: ''
     }
@@ -62,6 +67,7 @@ export default {
   methods: {
     getinfomation () {
       space().then((response) => {
+        console.log()
         console.log(response.data.results[0])
         this.infomation = response.data.results[0]
         this.$store.commit('set_id', this.infomation.id)

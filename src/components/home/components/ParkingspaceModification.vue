@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     submitForm (formName) {
+      var that = this
       let url = '/carport/' + this.ruleForm.space_num + '/'
       console.log(this.ruleForm.space_num)
       console.log(this.ruleForm.status)
@@ -57,7 +58,11 @@ export default {
         console.log(response)
         console.log('车位信息修改成功')
       }).catch(function (error) {
-        console.log(error)
+        that.$message({
+          showClose: true,
+          message: '修改失败，停车位ID输入有误',
+          type: 'error'
+        })
       })
     },
     resetForm (formName) {
