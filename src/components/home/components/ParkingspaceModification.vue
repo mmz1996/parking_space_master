@@ -21,58 +21,79 @@
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  name: 'ParkingspaceModification',
-  data  () {
-    return {
-      ruleForm: {
-        space_num: '',
-        status: ''
-      },
-      rules: {
-        space_num: [
-          { required: true, message: '请输入要修改车位的id值', trigger: 'blur' }
-        ]
-      }
-    }
-  },
-  methods: {
-    submitForm (formName) {
-      var that = this
-      let url = '/carport/' + this.ruleForm.space_num + '/'
-      console.log(this.ruleForm.space_num)
-      console.log(this.ruleForm.status)
-      console.log(this.$store.state.id)
-      console.log(url)
-      var that = this
-      axios({
-        method: 'patch',
-        url: url,
-        data: {
-          id: that.ruleForm.space_num,
-          status: that.ruleForm.status,
-          parkinglot: that.$store.state.id
+  import axios from 'axios'
+  export default {
+    name: 'ParkingspaceModification',
+    data  () {
+      return {
+        ruleForm: {
+          space_num: '',
+          status: ''
+        },
+        rules: {
+          space_num: [
+            { required: true, message: '请输入要修改车位的id值', trigger: 'blur' }
+          ]
         }
-      }).then(function (response) {
-        console.log(response)
-        console.log('车位信息修改成功')
-      }).catch(function (error) {
-        that.$message({
-          showClose: true,
-          message: '修改失败，停车位ID输入有误',
-          type: 'error'
-        })
-      })
+      }
     },
-    resetForm (formName) {
-      this.$refs[formName].resetFields()
-      this.ruleForm.status = ''
+    methods: {
+      submitForm (formName) {
+        var that = this
+        let url = '/carport/'
+        console.log(url)
+        var that = this
+        axios({
+          method: 'get',
+          url: url,
+          data: {
+            parkinglot: that.$store.state.id
+          }
+        }).then(function (response) {
+          that.results = response.data.results
+          for(let value of that.results){
+            if(value.code == that.ruleForm.space_num){
+              console.log(value.id)
+              that.id = value.id
+            }
+          }
+          console.log(that.id)
+          let newurl = '/carport/'+that.id+'/'
+          axios({
+            method: 'patch',
+            url: newurl,
+            data: {
+              id: that.id,
+              status: that.ruleForm.status,
+              parkinglot: that.$store.state.id
+            }
+          }).then(function (response) {
+            console.log("response")
+            console.log(response)
+            console.log('车位信息修改成功')
+          }).catch(function (error) {
+            that.$message({
+              showClose: true,
+              message: '修改失败，停车位ID输入有误',
+              type: 'error'
+            })
+          })
+        }).catch(function (error) {
+          that.$message({
+            showClose: true,
+            message: '修改失败，停车位ID输入有误',
+            type: 'error'
+          })
+        })
+      },
+      resetForm (formName) {
+        this.$refs[formName].resetFields()
+        this.ruleForm.status = ''
+      }
+    },
+    mounted () {
     }
-  },
-  mounted () {
   }
-}
 </script>
 
 <style lang='stylus' scoped>
